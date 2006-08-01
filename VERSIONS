@@ -1,0 +1,252 @@
+0.1    2003 April 18 - Kenneth Lavrsen
+       First release. Could only read data and would not retry any
+       data collecting. Downloaded 11 times.
+       
+0.2    2003 April 20 - Kenneth Lavrsen
+       Added retries so that the program will not just terminate if
+       reading fails. It will retry initialisation up to 50 times
+       and reading up to 5 times. Downloaded twice.
+       
+0.3    2003 April 23 - Kenneth Lavrsen
+       Added writing feature. Program can now write nibbles and set
+       and unset bits. Downloaded twice.
+       
+0.4    2003 April 24 - Kenneth Lavrsen
+       Released to satisfy the huge audience of previous versions ;-)
+       Split the sources in two files. One with the library of function
+       that communicate with the station and one that handles the input
+       parameters and the output. The idea is that the readwrite.c and
+       readwrite.h files can easily be used to generate new programs
+       that use the data or writes data from and to the station.
+       Additionally the program dump2300 was created. Besides being an
+       example of how to use readwrite.c as a library it is also a nice
+       tool to save a larger memory area to disk. The idea is that you can
+       use a file comparison tool to see changes in the memory when wheather
+       conditions change or when activating certain features.
+       The format is ASCII and readable by humans and includes the
+       address.
+       
+0.5    2003 April 30 - Kenneth Lavrsen
+       Small improvements to existing programs open2300 and dump2300.
+       readwrite.c has been extended with a new read_safe function which
+       does the hard work of retrying while reading. It is also renamed to
+       rw2300.
+       Three new programs have been added which mainly shows the use of
+       the rw2300 library. They are however also quite useful when exploring
+       the station and its data.
+       dump2300 will write out all the data in a given area to the screen
+       and to a file.
+       bin2300 does the same as dump2300 but the fileformat is kind of
+       binary. Each 4-bit nibble in the station is written as one byte in
+       the file. If you use start address 0 the file can be viewed in a
+       binary file viewer and the addresses will match 1:1. Output to screen
+       is human readable.
+       history2300 read out a selected range of the history records as raw
+       data to both screen and file.
+       log2300 is the most useful new tool. It read all the current data
+       from the station and add the information to a log file in plain
+       ASCII and human readable format. The idea is that this file can
+       be used to pick up data from a perl CGI program or PHP page.
+       Added a memory map file with all the known data areas inside the
+       station.
+
+0.6    2003 May 02 - Kenneth Lavrsen
+       Added fetch2300. This software reads all current values from the
+       station incl min/max data and dates and output them in a simple
+       format to standard out. The idea is that you can call this program
+       from a Perl or PHP page and load the data in an array ready for
+       display.
+       
+0.7    2003 May 08 - Kenneth Lavrsen
+       The rw2300 library has been made more rubust. Sometimes the WS2300
+       will be too busy to answer the RS232 for up to 2 minutes.
+       The retry method is now made so that the retry period increases in steps.
+       This means that normally the added delay is zero or very short. Only
+       when the station gets very busy will the delay become very long.
+       This is to ensure that a program such as log2300 does not time out
+       causing you to miss a data set. Worst case a delay of 2 minutes has
+       been seen. Usually round a whole hour during the night. Maybe it is
+       busy syncing with DCF77 (the longwave 77.5 kHz transmitter in Germany
+       that the clock is syncronised to) in the European model.
+       Added a PHP page that shows a nice webpage with current weather
+       station data. Along with it are some graphics files for tendency and
+       forecast. No new features to the other programs.
+       
+1.0    2004 Jan 11 - Kenneth Lavrsen
+       Added wu2300. This is a version of fetch2300 which get the data used at
+       Weather Underground (http://www.wunderground.com) and uploads it to
+       their servers.
+       
+1.1    2004 Feb 24 - Kenneth Lavrsen
+       Fixed a bug in wu2300.c. A "&" was missing which meant that the rain was
+       not reported. Thanks to Randy Miller for fixing and reporting this bug.
+       
+1.2    2004 Mar 07 - Kenneth Lavrsen
+       New features summary:
+       - Options now in a config file which enables distributing binaries also.
+       - The reading of weather data is made into functions making it much
+         easier to make your own programs.
+       - The code is being ported to also work under windows (compiling with
+         open source compiler - mingw).
+       - The 1.2 also includes upload to Citizen Weather.
+       - A new data log program which stores data in a MySQL database.
+       - Binaries for Windows included in distribution (except for mysql2300).
+       Details:
+       All tools can be built to Windows .exe files using the open source
+       MinGW32 compiler. All tools have been tested on Windows XP only.
+       The rw2300 library has been extended with many functions that returns
+       weather data directly. This means that you no longer have to decode the
+       raw data that you receive from the weather station. In 1.2 all current
+       data can be read using functions.
+       Randy Miller contributed with a program cw2300 which can upload
+       Weather Data to the Citizen Weather Observer Program.
+       Matt Woodward contributed with xml2300 - a version of fetch2300 which
+       stores current weather data in an XML file.
+       Matt Woodward contributed with a windows version of the basic serial bus
+       communication setup and closure. This was an important contribution in
+       getting this entire package ported to Windows.
+       Thomas Grieder contributed with a MySQL version of log2300 which has also
+       been rewritten for the new rw2300.
+       I wish to thank Randy Miller, Matt Woodward and Thomas Grieder for the
+       great work which enabled me to make this 1.2
+       
+       To-dos for next version
+       - Make mysql2300 binary
+       - Add functions to reset min/max values in the weather station
+       - Make small programs that can be run as cron jobs to reset min/max
+       - Add a "wind gust" feature which assumes the max wind data to be reset
+         often.
+       - Make a version of the weather graphs that uses the MySQL data instead
+         of the flat file.
+         
+1.3    2004 Mar 24 - Kenneth Lavrsen 
+       rw2300 has been extended with even more functions
+       - abs_pressure for absolute air pressure
+       - abs_pressure_minmax        -
+       - pressure_correction  is the difference between abs. and rel. pressure
+       - read_history_info  returns all the data related to the history data
+       - read_history_record  returns all the data stored in one history record
+       - light  turn background light on or off
+       - write_safe  write data to WS2300 including resets and retries to ensure
+                     data is actually written.
+       Other rw2300 changes:
+       - date now returns 4 digit year
+       - improvements in comment headers of many functions (cosmetic)
+       - the toolset should now also build and work on FreeBSD.
+       fetch2300 changes
+       - Changed returned date format to ISO8601 date format. This will break
+         some userware but better now than later.
+       log2300 changes:
+       - Added resolution of certain data; rain to two decimals and pressure to
+         3 decimals.
+       - Changed returned date format to ISO8601 date format.
+       xml2300 changes:
+       - Added resolution of certain data; rain to two decimals and pressure to
+         3 decimals.
+       - Changed returned date format to ISO8601 date format.
+       open2300 changes:
+       - Fixed nasty bug. the strtol function should have a null terminated
+         string as input but got a single byte char. This went wrong in Windows.
+       win2300 changes:
+       - Added some more value settings for the dcb structure. This probably
+         has no impact as they are most likely default any way.
+       linux2300 changes:
+       - Made the serial initialization much more correct and should also now
+         work on Free/OpenBSD.
+       - Reset06 now flushes the buffer for garbage that was never read.
+       light2300 is a new tool in the package. It can turn the LCD backlight on
+         and off. Turning light off make the unit self heat less.
+       histlog2300 is a new tool in the package also. It fetch data from the
+         iternal history data buffer in the weather station and writes it to
+         the a logfile keeping track of which record was written last and then
+         adds all the new records.
+       interval2300 is a new tool which can set and read the time interval at
+         which the weather station saves the history datasets.
+       weatherstation.php changes:
+       - The data parsing has been made compatible with more decimals in the
+         data. For US units one should modify to allow more decimals displayed
+         for rain and pressure.
+         
+1.4    2004 Apr 06 - Kenneth Lavrsen
+       rw2300 has been extended again:
+       - new reset of min/max values for all measurements and reset of rain
+         counters.
+       - reporting of errors when write goes wrong.
+       - the config structure has been extended with new APRS_SERVER settings
+         (contribution by Randy Miller).
+       linux2300/windows2300 has been improved:
+       - the citizen_weather_send() function has been improved so instead of
+         using hardcoded server addresses the servers addresses are now placed
+         in the config file (original linux version contributed by Randy
+         Miller).
+       minmax2300 is a new tool using the new rw2300 reset functions to reset
+         min/max for all measurements and resetting rain counters.
+         
+       Kenneth Lavrsen wishes to thank Randy Miller again for another good
+       contribution to the project.
+       
+1.5    2004 April 14 - Kenneth Lavrsen
+       Fixed bug in reading and resetting wind minimum (thanks Randy)
+       Updated memory map accordingly.
+       
+1.6    2004 April 22 - Kenneth Lavrsen
+       Fixed bug in resetting rain 24 hours
+       (copy/paste error of address)
+       
+1.7    2004 November 07 - Kenneth Lavrsen
+       Fixed a pointer overflow bug in fetch2300 which caused seg faults.
+       
+1.8    2004 November 13 - Kenneth Lavrsen
+       Fixed a missing flag in the serial port setup which would often result
+       in open2300 failing with a read_safe() error. The problem was related
+       to the serial driver translating 0D (CR) to 0A (LF). This unwanted
+       feature is now disabled in the setup of the serial port.
+       Martin Husemann submitted a patch that further made the serial
+       communication more robust.
+       
+1.9    2005 February 27 - Kenneth Lavrsen
+       rw2300 (and therefore all binaries)
+       - Fixed two bugs in the wind_reset() function in rw2300.c (thanks to
+       Ed Hanway and Bob Atchley for bug reports).
+       - Reverted back to the original code of completely resetting the adtio
+       struct to all zeros before setting the values(linux only). This seems
+       to give less read_safe errors.
+       - Fixed inaccuracy bug. All formulars where a value was devided by 100
+       were incorrectly done as integer devision. This cased small errors
+       on decimal values. (reported by Ed Hanway)
+       - Report error when serial port is locked by other program - Linux only
+       (Les Niles)
+       - Added Ralf Winkler's multilingual version of weatherstation as a zip
+       file in the htdocs directory.
+       - Added new tool pgsql2300 (Przemyslaw Sztoch)
+
+1.10   2005 March 05 - Kenneth Lavrsen
+       rw2300  (and therefore all binaries)
+       - Fixed an interger division error that had been missed in 1.9
+       (reported with fix by Andrew Braddick).
+       - mysql2300.sql definitions for temperatures did not allow space for
+       negative temperatures below -9.9. Added extra decimal space for all
+       dimentions that can be negative (reported and fixed by Johan Andersson).
+       Existing users that already have an mysql table with data can alter the
+       definitions with:
+       alter table weather modify temp_out decimal(4,1) not null default 0;
+       alter table weather modify temp_in decimal(4,1) not null default 0;
+       alter table weather modify dewpoint decimal(4,1) not null default 0;
+       alter table weather modify wind_chill decimal(4,1) not null default 0;
+       
+1.11   2005 December XX - Kenneth Lavrsen
+       - Fixed problem with opening an empty log file (fixed by Lars Hinrichsen)
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/EmptyFileSupport
+
+       To-dos for future version
+       - Make mysql2300 binary (help wanted)
+       - Make a version of the weather graphs that uses the MySQL data instead
+         of the flat file.
+       - Change the Windows version so that those compiled for no shell window
+         will still print messages if shell window already open.
+         Contribution for this welcome. Just a hint by email.
+         
+
+       
+       
+       

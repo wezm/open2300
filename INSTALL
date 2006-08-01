@@ -1,0 +1,89 @@
+First copy the open2300.conf-dist file to a location where you want the
+open2300 tools to read their configuration information.
+
+Unless you specify the pathname when invoking the programs the config file
+must be called open2300.conf.
+
+Default locations in chronological order are 
+  1. Path to config file including filename given as parameter
+     (not supported by all tools)
+  2. ./open2300.conf (current working directory)
+  3. /usr/local/etc/open2300.conf (typical Linux location)
+  4. /etc/open2300.conf (typical Linux location)
+
+For Windows it is most natural to keep the config file in the same directory
+as the executables. But for Windows it is best to specify the full path name
+of the config file. Most of the advanced programs in this package can take
+the path to the config file as a parameter.
+For those small tools that cannot - it is best to run the program from the
+same working directory as where you have the config file.
+
+Setting the serial port.
+In Windows you always have access to COM1, COM2 etc.
+In Linux it is more tricky.
+Make sure that the user that runs the binaries has both read and
+write access to this device.
+
+Example
+
+chmod 766 /dev/ttyS1
+will give access to everyone for COM2.
+
+If you want to use the program wu2300 which uploads your weather station
+data to Weather Underground (http://www.wunderground.com) you will need
+to register your station at Weather Underground first. You will then get
+an ID and a password. These must be changed config file.
+If your computer clock does not run GMT/UTC then you must set the
+timezone parameter also.
+
+There is no configure script.
+Edit the Makefile manually to change prefix and if needed install directory.
+
+Default is /usr/local/bin
+If you just want the binary executable in the current directory just run
+'make' and skip the 'make install'.
+
+In Windows it is probably easier to skip the make install and copy the
+executables manually if needed.
+
+You can also run 'make open2300' or 'make dump2300' etc to just create one
+executable
+
+So the fast track steps again are
+
+	Edit the Makefile and run...
+
+    make
+    
+    make install
+    
+To install under Windows either use the binaries or compile the sources using
+your favorite C compiler.
+The author has tested everything with the MinGW C-Compiler
+http://www.mingw.org/
+
+Note: Also read the README
+make install only copies the most important of the binaries to the
+bin directory.
+
+The mysql2300 has not yet been tested under Windows at the time of the release
+and there is no binary version for Windows yet.
+For Linux it requires that you have the mysql client development stuff installed.
+As RPM it is the "mysql-devel" that must be installed.
+The mysql stuff will be further tested and developed in the next versions.
+The Makefile fits a RedHat default installation. If you have a different placement
+of mysql.h and libmysqlclient.so then find out where they are and change the
+Makefile. The -I switch is for the include file mysql.h and -L is for the library
+file libmysqlclient.so.10.
+Because not all have MySQL installed the make all does not include the mysql2300.
+Run 'make mysql2300' to build it.
+You need to setup a database on MySQL. The default open2300.conf assumes the database
+is called open2300, with a user called open2300 with password mysql2300.
+Run the mysql2300.sql file in mysql to create the table "weather" in your database.
+
+The pgsql2300 is built using 'make pgsql2300'. It is only available for Linux.
+
+The files in the htdocs directory is a simple PHP page. It will run on any
+webserver that runs PHP. Just copy the files to your web document tree.
+It assumes the binary fetch2300 to be in /usr/local/bin. Just change the path
+if needed.
