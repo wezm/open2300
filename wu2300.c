@@ -116,6 +116,13 @@ int main(int argc, char *argv[])
 	strcat(urlline, tempstring);
 
 
+	/* Reset minimum and maximum wind readings if reporting gusts */
+	if (GUST)
+	{
+		wind_reset(ws2300, RESET_MIN + RESET_MAX);
+	}
+
+
 	/* SEND DATA TO WEATHER UNDERGROUND AS HTTP REQUEST */
 	/* or print the URL if DEBUG is enabled in the top of this file */
 
@@ -128,12 +135,6 @@ int main(int argc, char *argv[])
 	else
 	{
 		http_request_url(urlline);
-	}
-
-	/* Reset minimum and maximum wind readings if reporting gusts */
-	if (GUST)
-	{
-		wind_reset(ws2300, RESET_MIN + RESET_MAX);
 	}
 	
 	return(0);
