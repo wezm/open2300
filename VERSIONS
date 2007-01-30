@@ -234,9 +234,11 @@
        alter table weather modify dewpoint decimal(4,1) not null default 0;
        alter table weather modify wind_chill decimal(4,1) not null default 0;
        
-1.11   2005 December XX - Kenneth Lavrsen
+1.11   2007 February - Kenneth Lavrsen
        - Fixed problem with opening an empty log file (fixed by Lars Hinrichsen)
        http://www.lavrsen.dk/twiki/bin/view/Open2300/EmptyFileSupport
+       - Fixed problem with loading ARPS servers data from config. Also updated
+       the default servers
 
        To-dos for future version
        - Make mysql2300 binary (help wanted)
