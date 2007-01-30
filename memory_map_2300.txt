@@ -18,7 +18,7 @@ Address Data_Sample Function
 000C 0
 000D 1
 000E 6
-000F 0    Wind unit: 0=m/s, 1=knots, 2=beaufort, 3=km/h, 4=mph 
+000F 0    Wind unit: 0=m/s, 1=knots, 2=beaufort, 3=km/h, 4=mph
 0010 2
 0011 0
 0012 0
@@ -34,22 +34,22 @@ ALARM SET FLAGS (bits 3/2/1/0)
 001A 0    Alarm set flags: Pressure Hi/Pressure Ho/-/-
 001B 0    Alarm set flags: T out Hi/T out Lo/T in Hi/T in Lo
 001C 0    Alarm set flags: Dew Hi/Dew Lo/Windchill Hi/Windchill Lo
-001D 0    Alarm set flags: Hum in Hi/Hum in Lo/Hum out Hi/Hum out Lo 
+001D 0    Alarm set flags: Hum in Hi/Hum in Lo/Hum out Hi/Hum out Lo
 001E 0    Alarm set flags: -/-/Rain 1h/Rain 24h
 001F 0    Alarm set flags: -/Wind dir/Wind speed Hi/Wind speed Lo
-0020 4    Alarm active flags: -/Alarm Icon/-/Time?                  
-0021 0    Alarm active flags: Pressure Hi/Pressure Ho/-/-              
-0022 0    Alarm active flags: T out Hi/T out Lo/T in Hi/T in Lo        
-0023 0    Alarm active flags: Dew Hi/Dew Lo/Windchill Hi/Windchill Lo  
+0020 4    Alarm active flags: -/Alarm Icon/-/Time?
+0021 0    Alarm active flags: Pressure Hi/Pressure Ho/-/-
+0022 0    Alarm active flags: T out Hi/T out Lo/T in Hi/T in Lo
+0023 0    Alarm active flags: Dew Hi/Dew Lo/Windchill Hi/Windchill Lo
 0024 0    Alarm active flags: Hum in Hi/Hum in Lo/Hum out Hi/Hum out Lo
-0025 0    Alarm active flags: -/-/Rain 1h/Rain 24h                     
-0026 0    Alarm active flags: -/Wind dir/Wind speed Hi/Wind speed Lo   
-0027 0    Alarm active flags: Pressure Hi/Pressure Ho/-/-              
-0028 0    Alarm active flags: T out Hi/T out Lo/T in Hi/T in Lo        
-0029 0    Alarm active flags: Dew Hi/Dew Lo/Windchill Hi/Windchill Lo  
+0025 0    Alarm active flags: -/-/Rain 1h/Rain 24h
+0026 0    Alarm active flags: -/Wind dir/Wind speed Hi/Wind speed Lo
+0027 0    Alarm active flags: Pressure Hi/Pressure Ho/-/-
+0028 0    Alarm active flags: T out Hi/T out Lo/T in Hi/T in Lo
+0029 0    Alarm active flags: Dew Hi/Dew Lo/Windchill Hi/Windchill Lo
 002A 0    Alarm active flags: Hum in Hi/Hum in Lo/Hum out Hi/Hum out Lo
-002B 0    Alarm active flags: -/-/Rain 1h/Rain 24h                     
-002C 0    Alarm active flags: -/-/Wind speed Hi/Wind speed Lo   
+002B 0    Alarm active flags: -/-/Rain 1h/Rain 24h
+002C 0    Alarm active flags: -/-/Wind speed Hi/Wind speed Lo
 002D 5
 002E 0
 002F 0
@@ -591,13 +591,13 @@ TIME
 0243 0    Current month: BCD 10s
 0244 3    Current year: BCD 1s last two digits
 0245 0    Current year: BCD 10s last two digit
-0246 0  
-0247 0  
-0248 7  
-0249 0  
-024A 8  
-024B 1  
-024C 1  
+0246 0
+0247 0
+0248 7
+0249 0
+024A 8
+024B 1
+024C 1
 
 DATE UNIT SET
 024D 1    Date the unit was last set to: BCD 1s
@@ -625,7 +625,7 @@ DATE UNIT SET
 0263 0
 0264 3
 0265 5
-0266 4    LCD contrast value -1. Changing it has no impact on LCD. Read only 
+0266 4    LCD contrast value -1. Changing it has no impact on LCD. Read only
 0267 1
 0268 0
 0269 0
@@ -855,190 +855,190 @@ TENDENCY/FORECAST
 INDOOR TEMPERATURE
 0346 0    Current Indoor Temperature: BCD offset 30 0.01s [C]
 0347 6    Current Indoor Temperature: BCD offset 30 0.1s [C]
-0348 8    Current Indoor Temperature: BCD offset 30 1s [C]  
-0349 5    Current Indoor Temperature: BCD offset 30 10s [C]  
-034A 0 
+0348 8    Current Indoor Temperature: BCD offset 30 1s [C]
+0349 5    Current Indoor Temperature: BCD offset 30 10s [C]
+034A 0
 034B 0    Minimum Indoor Temperature: BCD offset 30 0.01s [C]
 034C 5    Minimum Indoor Temperature: BCD offset 30 0.1s [C]
-034D 5    Minimum Indoor Temperature: BCD offset 30 1s [C]  
-034E 4    Minimum Indoor Temperature: BCD offset 30 10s [C]  
-034F 0 
+034D 5    Minimum Indoor Temperature: BCD offset 30 1s [C]
+034E 4    Minimum Indoor Temperature: BCD offset 30 10s [C]
+034F 0
 0350 0    Maximum Indoor Temperature: BCD offset 30 0.1s [C]
 0351 7    Maximum Indoor Temperature: BCD offset 30 0.1s [C]
-0352 9    Maximum Indoor Temperature: BCD offset 30 1s [C]  
-0353 5    Maximum Indoor Temperature: BCD offset 30 10s [C]  
-0354 0    Time min Indoor Temperature:, minutes BCD 1s   
-0355 2    Time min Indoor Temperature:, minutes BCD 10s  
-0356 2    Time min Indoor Temperature:, hours BCD 1s     
-0357 1    Time min Indoor Temperature:, hours BCD 10s    
-0358 1    Date min Indoor Temperature:, BCD day 1s   
-0359 0    Date min Indoor Temperature:, BCD day 10s  
-035A 1    Date min Indoor Temperature:, BCD month 1s 
+0352 9    Maximum Indoor Temperature: BCD offset 30 1s [C]
+0353 5    Maximum Indoor Temperature: BCD offset 30 10s [C]
+0354 0    Time min Indoor Temperature:, minutes BCD 1s
+0355 2    Time min Indoor Temperature:, minutes BCD 10s
+0356 2    Time min Indoor Temperature:, hours BCD 1s
+0357 1    Time min Indoor Temperature:, hours BCD 10s
+0358 1    Date min Indoor Temperature:, BCD day 1s
+0359 0    Date min Indoor Temperature:, BCD day 10s
+035A 1    Date min Indoor Temperature:, BCD month 1s
 035B 0    Date min Indoor Temperature:, BCD month 10s
-035C 1    Date min Indoor Temperature:, BCD year 1s  
-035D 0    Date min Indoor Temperature:, BCD year 10s 
-035E 5    Time max Indoor Temperature:, minutes BCD 1s   
-035F 5    Time max Indoor Temperature:, minutes BCD 10s  
-0360 7    Time max Indoor Temperature:, hours BCD 1s     
-0361 1    Time max Indoor Temperature:, hours BCD 10s    
-0362 1    Date max Indoor Temperature:, BCD day 1s   
-0363 2    Date max Indoor Temperature:, BCD day 10s  
-0364 4    Date max Indoor Temperature:, BCD month 1s 
+035C 1    Date min Indoor Temperature:, BCD year 1s
+035D 0    Date min Indoor Temperature:, BCD year 10s
+035E 5    Time max Indoor Temperature:, minutes BCD 1s
+035F 5    Time max Indoor Temperature:, minutes BCD 10s
+0360 7    Time max Indoor Temperature:, hours BCD 1s
+0361 1    Time max Indoor Temperature:, hours BCD 10s
+0362 1    Date max Indoor Temperature:, BCD day 1s
+0363 2    Date max Indoor Temperature:, BCD day 10s
+0364 4    Date max Indoor Temperature:, BCD month 1s
 0365 0    Date max Indoor Temperature:, BCD month 10s
-0366 3    Date max Indoor Temperature:, BCD year 1s  
-0367 0    Date max Indoor Temperature:, BCD year 10s 
+0366 3    Date max Indoor Temperature:, BCD year 1s
+0367 0    Date max Indoor Temperature:, BCD year 10s
 0368 0
 0369 0    Low Alarm Indoor Temperature: BCD offset 30 0.01s [C]
 036A 1    Low Alarm Indoor Temperature: BCD offset 30 0.1s [C]
-036B 7    Low Alarm Indoor Temperature: BCD offset 30 1s [C]  
+036B 7    Low Alarm Indoor Temperature: BCD offset 30 1s [C]
 036C 4    Low Alarm Indoor Temperature: BCD offset 30 10s [C]
 036D 0
 036E 0    High Alarm Indoor Temperature: BCD offset 30 0.01s [C]
 036F 6    High Alarm Indoor Temperature: BCD offset 30 0.1s [C]
-0370 9    High Alarm Indoor Temperature: BCD offset 30 1s [C]  
-0371 5    High Alarm Indoor Temperature: BCD offset 30 10s [C] 
+0370 9    High Alarm Indoor Temperature: BCD offset 30 1s [C]
+0371 5    High Alarm Indoor Temperature: BCD offset 30 10s [C]
 0372 0
 
 OUTDOOR TEMPERATURE
 0373 0    Current Outdoor Temperature: BCD offset 30 0.01s [C]
 0374 4    Current Outdoor Temperature: BCD offset 30 0.1s [C]
-0375 7    Current Outdoor Temperature: BCD offset 30 1s [C]  
-0376 3    Current Outdoor Temperature: BCD offset 30 10s [C]  
-0377 0                                                      
-0378 0    Minimum Outdoor Temperature: BCD offset 30 0.01s [C]                                                  
+0375 7    Current Outdoor Temperature: BCD offset 30 1s [C]
+0376 3    Current Outdoor Temperature: BCD offset 30 10s [C]
+0377 0
+0378 0    Minimum Outdoor Temperature: BCD offset 30 0.01s [C]
 0379 5    Minimum Outdoor Temperature: BCD offset 30 0.1s [C]
-037A 2    Minimum Outdoor Temperature: BCD offset 30 1s [C]  
-037B 3    Minimum Outdoor Temperature: BCD offset 30 10s [C]  
-037C 0                                                      
+037A 2    Minimum Outdoor Temperature: BCD offset 30 1s [C]
+037B 3    Minimum Outdoor Temperature: BCD offset 30 10s [C]
+037C 0
 037D 0    Maximum Outdoor Temperature: BCD offset 30 0.01s [C]
 037E 8    Maximum Outdoor Temperature: BCD offset 30 0.1s [C]
-037F 5    Maximum Outdoor Temperature: BCD offset 30 1s [C]  
-0380 6    Maximum Outdoor Temperature: BCD offset 30 10s [C]  
-0381 5    Time min Outdoor Temperature:, minutes BCD 1s   
-0382 2    Time min Outdoor Temperature:, minutes BCD 10s  
-0383 6    Time min Outdoor Temperature:, hours BCD 1s     
-0384 0    Time min Outdoor Temperature:, hours BCD 10s    
-0385 7    Date min Outdoor Temperature:, BCD day 1s   
-0386 1    Date min Outdoor Temperature:, BCD day 10s  
-0387 4    Date min Outdoor Temperature:, BCD month 1s 
+037F 5    Maximum Outdoor Temperature: BCD offset 30 1s [C]
+0380 6    Maximum Outdoor Temperature: BCD offset 30 10s [C]
+0381 5    Time min Outdoor Temperature:, minutes BCD 1s
+0382 2    Time min Outdoor Temperature:, minutes BCD 10s
+0383 6    Time min Outdoor Temperature:, hours BCD 1s
+0384 0    Time min Outdoor Temperature:, hours BCD 10s
+0385 7    Date min Outdoor Temperature:, BCD day 1s
+0386 1    Date min Outdoor Temperature:, BCD day 10s
+0387 4    Date min Outdoor Temperature:, BCD month 1s
 0388 0    Date min Outdoor Temperature:, BCD month 10s
-0389 3    Date min Outdoor Temperature:, BCD year 1s  
-038A 0    Date min Outdoor Temperature:, BCD year 10s 
-038B 1    Time max Outdoor Temperature:, minutes BCD 1s 
+0389 3    Date min Outdoor Temperature:, BCD year 1s
+038A 0    Date min Outdoor Temperature:, BCD year 10s
+038B 1    Time max Outdoor Temperature:, minutes BCD 1s
 038C 0    Time max Outdoor Temperature:, minutes BCD 10s
-038D 7    Time max Outdoor Temperature:, hours BCD 1s   
-038E 1    Time max Outdoor Temperature:, hours BCD 10s  
-038F 7    Date max Outdoor Temperature:, BCD day 1s     
-0390 1    Date max Outdoor Temperature:, BCD day 10s    
-0391 4    Date max Outdoor Temperature:, BCD month 1s   
-0392 0    Date max Outdoor Temperature:, BCD month 10s  
-0393 3    Date max Outdoor Temperature:, BCD year 1s    
-0394 0    Date max Outdoor Temperature:, BCD year 10s   
+038D 7    Time max Outdoor Temperature:, hours BCD 1s
+038E 1    Time max Outdoor Temperature:, hours BCD 10s
+038F 7    Date max Outdoor Temperature:, BCD day 1s
+0390 1    Date max Outdoor Temperature:, BCD day 10s
+0391 4    Date max Outdoor Temperature:, BCD month 1s
+0392 0    Date max Outdoor Temperature:, BCD month 10s
+0393 3    Date max Outdoor Temperature:, BCD year 1s
+0394 0    Date max Outdoor Temperature:, BCD year 10s
 0395 0
 0396 0    Low Alarm Outdoor Temperature: BCD offset 30 0.01s [C]
-0397 0    Low Alarm Outdoor Temperature: BCD offset 30 0.1s [C] 
-0398 0    Low Alarm Outdoor Temperature: BCD offset 30 1s [C]   
-0399 3    Low Alarm Outdoor Temperature: BCD offset 30 10s [C]  
-039A 0                                                          
+0397 0    Low Alarm Outdoor Temperature: BCD offset 30 0.1s [C]
+0398 0    Low Alarm Outdoor Temperature: BCD offset 30 1s [C]
+0399 3    Low Alarm Outdoor Temperature: BCD offset 30 10s [C]
+039A 0
 039B 0    High Alarm Outdoor Temperature: BCD offset 30 0.01s [C]
-039C 0    High Alarm Outdoor Temperature: BCD offset 30 0.1s [C] 
-039D 0    High Alarm Outdoor Temperature: BCD offset 30 1s [C]   
-039E 7    High Alarm Outdoor Temperature: BCD offset 30 10s [C]  
+039C 0    High Alarm Outdoor Temperature: BCD offset 30 0.1s [C]
+039D 0    High Alarm Outdoor Temperature: BCD offset 30 1s [C]
+039E 7    High Alarm Outdoor Temperature: BCD offset 30 10s [C]
 039F 0
 
 WINDCHILL
 03A0 0    Current Windchill: BCD offset 30 0.01s [C]
 03A1 4    Current Windchill: BCD offset 30 0.1s [C]
-03A2 7    Current Windchill: BCD offset 30 1s [C]  
-03A3 3    Current Windchill: BCD offset 30 10s [C]  
-03A4 8                                    
-03A5 0    Minimum Windchill: BCD offset 30 0.01s [C]                                
+03A2 7    Current Windchill: BCD offset 30 1s [C]
+03A3 3    Current Windchill: BCD offset 30 10s [C]
+03A4 8
+03A5 0    Minimum Windchill: BCD offset 30 0.01s [C]
 03A6 2    Minimum Windchill: BCD offset 30 0.1s [C]
-03A7 8    Minimum Windchill: BCD offset 30 1s [C]  
-03A8 1    Minimum Windchill: BCD offset 30 10s [C]  
-03A9 0                                    
-03AA 0    Maximum Windchill: BCD offset 30 0.01s [C]                                
+03A7 8    Minimum Windchill: BCD offset 30 1s [C]
+03A8 1    Minimum Windchill: BCD offset 30 10s [C]
+03A9 0
+03AA 0    Maximum Windchill: BCD offset 30 0.01s [C]
 03AB 8    Maximum Windchill: BCD offset 30 0.1s [C]
-03AC 9    Maximum Windchill: BCD offset 30 1s [C]  
-03AD 4    Maximum Windchill: BCD offset 30 10s [C]  
-03AE 2    Time min Windchill:, minutes BCD 1s   
-03AF 0    Time min Windchill:, minutes BCD 10s  
-03B0 6    Time min Windchill:, hours BCD 1s     
-03B1 0    Time min Windchill:, hours BCD 10s    
-03B2 9    Date min Windchill:, BCD day 1s   
-03B3 1    Date min Windchill:, BCD day 10s  
-03B4 4    Date min Windchill:, BCD month 1s 
+03AC 9    Maximum Windchill: BCD offset 30 1s [C]
+03AD 4    Maximum Windchill: BCD offset 30 10s [C]
+03AE 2    Time min Windchill:, minutes BCD 1s
+03AF 0    Time min Windchill:, minutes BCD 10s
+03B0 6    Time min Windchill:, hours BCD 1s
+03B1 0    Time min Windchill:, hours BCD 10s
+03B2 9    Date min Windchill:, BCD day 1s
+03B3 1    Date min Windchill:, BCD day 10s
+03B4 4    Date min Windchill:, BCD month 1s
 03B5 0    Date min Windchill:, BCD month 10s
-03B6 3    Date min Windchill:, BCD year 1s  
-03B7 0    Date min Windchill:, BCD year 10s 
-03B8 6    Time max Windchill:, minutes BCD 1s   
-03B9 4    Time max Windchill:, minutes BCD 10s  
-03BA 8    Time max Windchill:, hours BCD 1s     
-03BB 0    Time max Windchill:, hours BCD 10s    
-03BC 3    Date max Windchill:, BCD day 1s   
-03BD 2    Date max Windchill:, BCD day 10s  
-03BE 4    Date max Windchill:, BCD month 1s 
+03B6 3    Date min Windchill:, BCD year 1s
+03B7 0    Date min Windchill:, BCD year 10s
+03B8 6    Time max Windchill:, minutes BCD 1s
+03B9 4    Time max Windchill:, minutes BCD 10s
+03BA 8    Time max Windchill:, hours BCD 1s
+03BB 0    Time max Windchill:, hours BCD 10s
+03BC 3    Date max Windchill:, BCD day 1s
+03BD 2    Date max Windchill:, BCD day 10s
+03BE 4    Date max Windchill:, BCD month 1s
 03BF 0    Date max Windchill:, BCD month 10s
-03C0 3    Date max Windchill:, BCD year 1s  
-03C1 0    Date max Windchill:, BCD year 10s 
+03C0 3    Date max Windchill:, BCD year 1s
+03C1 0    Date max Windchill:, BCD year 10s
 03C2 0
-03C3 0    Low Alarm Windchill: BCD offset 30 0.01s [C] 
-03C4 0    Low Alarm Windchill: BCD offset 30 0.1s [C]  
-03C5 5    Low Alarm Windchill: BCD offset 30 1s [C]    
-03C6 3    Low Alarm Windchill: BCD offset 30 10s [C]   
-03C7 0                                                           
+03C3 0    Low Alarm Windchill: BCD offset 30 0.01s [C]
+03C4 0    Low Alarm Windchill: BCD offset 30 0.1s [C]
+03C5 5    Low Alarm Windchill: BCD offset 30 1s [C]
+03C6 3    Low Alarm Windchill: BCD offset 30 10s [C]
+03C7 0
 03C8 0    High Alarm Windchill: BCD offset 30 0.01s [C]
-03C9 0    High Alarm Windchill: BCD offset 30 0.1s [C] 
-03CA 0    High Alarm Windchill: BCD offset 30 1s [C]   
-03CB 6    High Alarm Windchill: BCD offset 30 10s [C]  
+03C9 0    High Alarm Windchill: BCD offset 30 0.1s [C]
+03CA 0    High Alarm Windchill: BCD offset 30 1s [C]
+03CB 6    High Alarm Windchill: BCD offset 30 10s [C]
 03CC 0
 03CD 0
 
 DEWPOINT
 03CE 9    Current Dewpoint: BCD offset 30 0.01s [C]
 03CF 4    Current Dewpoint: BCD offset 30 0.1s [C]
-03D0 2    Current Dewpoint: BCD offset 30 1s [C]  
-03D1 3    Current Dewpoint: BCD offset 30 10s [C]  
-03D2 6 
+03D0 2    Current Dewpoint: BCD offset 30 1s [C]
+03D1 3    Current Dewpoint: BCD offset 30 10s [C]
+03D2 6
 03D3 1    Minimum Dewpoint: BCD offset 30 0.01s [C]
 03D4 1    Minimum Dewpoint: BCD offset 30 0.1s [C]
-03D5 3    Minimum Dewpoint: BCD offset 30 1s [C]  
-03D6 2    Minimum Dewpoint: BCD offset 30 1s [C]  
-03D7 0 
+03D5 3    Minimum Dewpoint: BCD offset 30 1s [C]
+03D6 2    Minimum Dewpoint: BCD offset 30 1s [C]
+03D7 0
 03D8 4    Maximum Dewpoint: BCD offset 30 0.01s [C]
 03D9 4    Maximum Dewpoint: BCD offset 30 0.1s [C]
-03DA 8    Maximum Dewpoint: BCD offset 30 1s [C]  
-03DB 3    Maximum Dewpoint: BCD offset 30 10s [C]  
-03DC 7    Time min Dewpoint:, minutes BCD 1s 
+03DA 8    Maximum Dewpoint: BCD offset 30 1s [C]
+03DB 3    Maximum Dewpoint: BCD offset 30 10s [C]
+03DC 7    Time min Dewpoint:, minutes BCD 1s
 03DD 1    Time min Dewpoint:, minutes BCD 10s
-03DE 7    Time min Dewpoint:, hours BCD 1s   
-03DF 1    Time min Dewpoint:, hours BCD 10s  
-03E0 0    Date min Dewpoint:, BCD day 1s     
-03E1 2    Date min Dewpoint:, BCD day 10s    
-03E2 4    Date min Dewpoint:, BCD month 1s   
-03E3 0    Date min Dewpoint:, BCD month 10s  
-03E4 3    Date min Dewpoint:, BCD year 1s    
-03E5 0    Date min Dewpoint:, BCD year 10s   
-03E6 2    Time max Dewpoint:, minutes BCD 1s 
+03DE 7    Time min Dewpoint:, hours BCD 1s
+03DF 1    Time min Dewpoint:, hours BCD 10s
+03E0 0    Date min Dewpoint:, BCD day 1s
+03E1 2    Date min Dewpoint:, BCD day 10s
+03E2 4    Date min Dewpoint:, BCD month 1s
+03E3 0    Date min Dewpoint:, BCD month 10s
+03E4 3    Date min Dewpoint:, BCD year 1s
+03E5 0    Date min Dewpoint:, BCD year 10s
+03E6 2    Time max Dewpoint:, minutes BCD 1s
 03E7 0    Time max Dewpoint:, minutes BCD 10s
-03E8 0    Time max Dewpoint:, hours BCD 1s   
-03E9 0    Time max Dewpoint:, hours BCD 10s  
-03EA 1    Date max Dewpoint:, BCD day 1s     
-03EB 0    Date max Dewpoint:, BCD day 10s    
-03EC 1    Date max Dewpoint:, BCD month 1s   
-03ED 0    Date max Dewpoint:, BCD month 10s  
-03EE 1    Date max Dewpoint:, BCD year 1s    
-03EF 0    Date max Dewpoint:, BCD year 10s   
+03E8 0    Time max Dewpoint:, hours BCD 1s
+03E9 0    Time max Dewpoint:, hours BCD 10s
+03EA 1    Date max Dewpoint:, BCD day 1s
+03EB 0    Date max Dewpoint:, BCD day 10s
+03EC 1    Date max Dewpoint:, BCD month 1s
+03ED 0    Date max Dewpoint:, BCD month 10s
+03EE 1    Date max Dewpoint:, BCD year 1s
+03EF 0    Date max Dewpoint:, BCD year 10s
 03F0 0
-03F1 0    Low Alarm Dewpoint: BCD offset 30 0.01s [C] 
-03F2 0    Low Alarm Dewpoint: BCD offset 30 0.1s [C]  
-03F3 0    Low Alarm Dewpoint: BCD offset 30 1s [C]    
-03F4 3    Low Alarm Dewpoint: BCD offset 30 10s [C]   
-03F5 0                                                 
+03F1 0    Low Alarm Dewpoint: BCD offset 30 0.01s [C]
+03F2 0    Low Alarm Dewpoint: BCD offset 30 0.1s [C]
+03F3 0    Low Alarm Dewpoint: BCD offset 30 1s [C]
+03F4 3    Low Alarm Dewpoint: BCD offset 30 10s [C]
+03F5 0
 03F6 0    High Alarm Dewpoint: BCD offset 30 0.01s [C]
-03F7 0    High Alarm Dewpoint: BCD offset 30 0.1s [C] 
-03F8 0    High Alarm Dewpoint: BCD offset 30 1s [C]   
-03F9 5    High Alarm Dewpoint: BCD offset 30 10s [C]  
+03F7 0    High Alarm Dewpoint: BCD offset 30 0.1s [C]
+03F8 0    High Alarm Dewpoint: BCD offset 30 1s [C]
+03F9 5    High Alarm Dewpoint: BCD offset 30 10s [C]
 03FA 2
 
 HUMIDITY INDOORS
@@ -1048,61 +1048,61 @@ HUMIDITY INDOORS
 03FE 1    Minimum Rel Humidity Indoors: BCD 10s [%]
 03FF 7    Maximum Rel Humidity Indoors: BCD 1s [%]
 0400 4    Maximum Rel Humidity Indoors: BCD 10s [%]
-0401 8    Time min Rel Humidity Indoors:, minutes BCD 1s   
-0402 1    Time min Rel Humidity Indoors:, minutes BCD 10s  
-0403 0    Time min Rel Humidity Indoors:, hours BCD 1s     
-0404 0    Time min Rel Humidity Indoors:, hours BCD 10s    
-0405 1    Date min Rel Humidity Indoors:, BCD day 1s   
-0406 2    Date min Rel Humidity Indoors:, BCD day 10s  
-0407 4    Date min Rel Humidity Indoors:, BCD month 1s 
+0401 8    Time min Rel Humidity Indoors:, minutes BCD 1s
+0402 1    Time min Rel Humidity Indoors:, minutes BCD 10s
+0403 0    Time min Rel Humidity Indoors:, hours BCD 1s
+0404 0    Time min Rel Humidity Indoors:, hours BCD 10s
+0405 1    Date min Rel Humidity Indoors:, BCD day 1s
+0406 2    Date min Rel Humidity Indoors:, BCD day 10s
+0407 4    Date min Rel Humidity Indoors:, BCD month 1s
 0408 0    Date min Rel Humidity Indoors:, BCD month 10s
-0409 3    Date min Rel Humidity Indoors:, BCD year 1s  
-040A 0    Date min Rel Humidity Indoors:, BCD year 10s 
-040B 5    Time max Rel Humidity Indoors:, minutes BCD 1s 
+0409 3    Date min Rel Humidity Indoors:, BCD year 1s
+040A 0    Date min Rel Humidity Indoors:, BCD year 10s
+040B 5    Time max Rel Humidity Indoors:, minutes BCD 1s
 040C 4    Time max Rel Humidity Indoors:, minutes BCD 10s
-040D 3    Time max Rel Humidity Indoors:, hours BCD 1s   
-040E 2    Time max Rel Humidity Indoors:, hours BCD 10s  
-040F 4    Date max Rel Humidity Indoors:, BCD day 1s     
-0410 1    Date max Rel Humidity Indoors:, BCD day 10s    
-0411 4    Date max Rel Humidity Indoors:, BCD month 1s   
-0412 0    Date max Rel Humidity Indoors:, BCD month 10s  
-0413 3    Date max Rel Humidity Indoors:, BCD year 1s    
-0414 0    Date max Rel Humidity Indoors:, BCD year 10s   
-0415 5    Low Alarm Rel Humidity Indoors: BCD 1s [%] 
+040D 3    Time max Rel Humidity Indoors:, hours BCD 1s
+040E 2    Time max Rel Humidity Indoors:, hours BCD 10s
+040F 4    Date max Rel Humidity Indoors:, BCD day 1s
+0410 1    Date max Rel Humidity Indoors:, BCD day 10s
+0411 4    Date max Rel Humidity Indoors:, BCD month 1s
+0412 0    Date max Rel Humidity Indoors:, BCD month 10s
+0413 3    Date max Rel Humidity Indoors:, BCD year 1s
+0414 0    Date max Rel Humidity Indoors:, BCD year 10s
+0415 5    Low Alarm Rel Humidity Indoors: BCD 1s [%]
 0416 3    Low Alarm Rel Humidity Indoors: BCD 10s [%]
-0417 5    Hign Alarm Rel Humidity Indoors: BCD 1s [%] 
+0417 5    Hign Alarm Rel Humidity Indoors: BCD 1s [%]
 0418 6    High Alarm Rel Humidity Indoors: BCD 10s [%]
 
 HUMIDITY OUTDOORS
-0419 1    Rel Humidity Outdoors: BCD 1s [%]         
-041A 7    Rel Humidity Outdoors: BCD 10s [%]        
-041B 9    Minimum Rel Humidity Outdoors: BCD 1s [%] 
+0419 1    Rel Humidity Outdoors: BCD 1s [%]
+041A 7    Rel Humidity Outdoors: BCD 10s [%]
+041B 9    Minimum Rel Humidity Outdoors: BCD 1s [%]
 041C 1    Minimum Rel Humidity Outdoors: BCD 10s [%]
-041D 8    Maximum Rel Humidity Outdoors: BCD 1s [%] 
+041D 8    Maximum Rel Humidity Outdoors: BCD 1s [%]
 041E 7    Maximum Rel Humidity Outdoors: BCD 10s [%]
-041F 9    Time min Rel Humidity Outdoors:, minutes BCD 1s   
-0420 1    Time min Rel Humidity Outdoors:, minutes BCD 10s  
-0421 7    Time min Rel Humidity Outdoors:, hours BCD 1s     
-0422 1    Time min Rel Humidity Outdoors:, hours BCD 10s    
-0423 1    Date min Rel Humidity Outdoors:, BCD day 1s   
-0424 2    Date min Rel Humidity Outdoors:, BCD day 10s  
-0425 4    Date min Rel Humidity Outdoors:, BCD month 1s 
+041F 9    Time min Rel Humidity Outdoors:, minutes BCD 1s
+0420 1    Time min Rel Humidity Outdoors:, minutes BCD 10s
+0421 7    Time min Rel Humidity Outdoors:, hours BCD 1s
+0422 1    Time min Rel Humidity Outdoors:, hours BCD 10s
+0423 1    Date min Rel Humidity Outdoors:, BCD day 1s
+0424 2    Date min Rel Humidity Outdoors:, BCD day 10s
+0425 4    Date min Rel Humidity Outdoors:, BCD month 1s
 0426 0    Date min Rel Humidity Outdoors:, BCD month 10s
-0427 3    Date min Rel Humidity Outdoors:, BCD year 1s  
-0428 0    Date min Rel Humidity Outdoors:, BCD year 10s 
-0429 6    Time max Rel Humidity Outdoors:, minutes BCD 1s 
+0427 3    Date min Rel Humidity Outdoors:, BCD year 1s
+0428 0    Date min Rel Humidity Outdoors:, BCD year 10s
+0429 6    Time max Rel Humidity Outdoors:, minutes BCD 1s
 042A 2    Time max Rel Humidity Outdoors:, minutes BCD 10s
-042B 7    Time max Rel Humidity Outdoors:, hours BCD 1s   
-042C 0    Time max Rel Humidity Outdoors:, hours BCD 10s  
-042D 9    Date max Rel Humidity Outdoors:, BCD day 1s     
-042E 1    Date max Rel Humidity Outdoors:, BCD day 10s    
-042F 4    Date max Rel Humidity Outdoors:, BCD month 1s   
-0430 0    Date max Rel Humidity Outdoors:, BCD month 10s  
-0431 3    Date max Rel Humidity Outdoors:, BCD year 1s    
-0432 0    Date max Rel Humidity Outdoors:, BCD year 10s   
-0433 5    Low Alarm Rel Humidity Outdoors: BCD 1s [%]  
-0434 4    Low Alarm Rel Humidity Outdoors: BCD 10s [%] 
-0435 0    Hign Alarm Rel Humidity Outdoors: BCD 1s [%] 
+042B 7    Time max Rel Humidity Outdoors:, hours BCD 1s
+042C 0    Time max Rel Humidity Outdoors:, hours BCD 10s
+042D 9    Date max Rel Humidity Outdoors:, BCD day 1s
+042E 1    Date max Rel Humidity Outdoors:, BCD day 10s
+042F 4    Date max Rel Humidity Outdoors:, BCD month 1s
+0430 0    Date max Rel Humidity Outdoors:, BCD month 10s
+0431 3    Date max Rel Humidity Outdoors:, BCD year 1s
+0432 0    Date max Rel Humidity Outdoors:, BCD year 10s
+0433 5    Low Alarm Rel Humidity Outdoors: BCD 1s [%]
+0434 4    Low Alarm Rel Humidity Outdoors: BCD 10s [%]
+0435 0    Hign Alarm Rel Humidity Outdoors: BCD 1s [%]
 0436 7    High Alarm Rel Humidity Outdoors: BCD 10s [%]
 0437 6
 0438 0
@@ -1119,12 +1119,18 @@ HUMIDITY OUTDOORS
 0443 C
 0444 F
 0445 0
+
+
+
+
+
+
 0446 0    Rain 24 h area
-0447 0    Rain 24 h area
-0448 0    Rain 24 h area
-0449 0    Rain 24 h area
-044A 0    Rain 24 h area
-044B 0    Rain 24 h area
+0447 0    At 0446 to 2 Reads of 12.
+0448 0    Store as 24 byte array.
+0449 0    What this is, is a rolling queue of the last 24hours of "impulses" from the rain gauge.
+044A 0    Each "impulse" is 0.0204" or 0.51826mm of rain.
+044B 0    This measurement is simply (# impulses * unitOfMeasure)
 044C 0    Rain 24 h area
 044D 0    Rain 24 h area
 044E 0    Rain 24 h area
@@ -1170,13 +1176,13 @@ HUMIDITY OUTDOORS
 0476 C
 0477 F
 0478 0
-0479 0    Rain 1h area coding unknown
-047A 0    Rain 1h area
-047B 0    Rain 1h area
-047C 0    Rain 1h area
-047D 0    Rain 1h area
-047E 0    Rain 1h area
-047F 0    Rain 1h area
+0479 0    Rain 1h area
+047A 0    Start your read at 0479. Read 2 sets of 15.
+047B 0    Store as a 30 byte array.                  
+047C 0    What this is, is a rolling queue
+047D 0    Each "impulse" is 0.0204" or 0.51826mm of rain.
+047E 0    This measurement is simply (# impulses * unitOfMeasure)
+047F 0    Exact encoding not yet decoded
 0480 0    Rain 1h area
 0481 0    Rain 1h area
 0482 0    Rain 1h area
@@ -1202,85 +1208,85 @@ HUMIDITY OUTDOORS
 0496 0    Rain 1h area
 
 RAIN 24 HOUR
-0497 0    Rain 24 hour: BCD 0.01s [mm]        
-0498 0    Rain 24 hour: BCD 0.1s [mm]         
-0499 0    Rain 24 hour: BCD 1s [mm]           
-049A 0    Rain 24 hour: BCD 10s [mm]          
-049B 0    Rain 24 hour: BCD 100s [mm]         
-049C 0    Rain 24 hour: BCD 1000s [mm]        
-049D 8    Rain max 24 hour: BCD 0.01s [mm]    
-049E 9    Rain max 24 hour: BCD 0.1s [mm]     
-049F 8    Rain max 24 hour: BCD 1s [mm]       
-04A0 2    Rain max 24 hour: BCD 10s [mm]      
-04A1 1    Rain max 24 hour: BCD 100s [mm]     
-04A2 0    Rain max 24 hour: BCD 1000s [mm]    
-04A3 9    Time max rain 24h, minutes BCD 1s      
-04A4 5    Time max rain 24h, minutes BCD 10s     
-04A5 4    Time max rain 24h, hours BCD 1s        
-04A6 1    Time max rain 24h, hours BCD 10s       
-04A7 1    Date max rain 24h, BCD day 1s   
-04A8 2    Date max rain 24h, BCD day 10s  
-04A9 4    Date max rain 24h, BCD month 1s 
+0497 0    Rain 24 hour: BCD 0.01s [mm]
+0498 0    Rain 24 hour: BCD 0.1s [mm]
+0499 0    Rain 24 hour: BCD 1s [mm]
+049A 0    Rain 24 hour: BCD 10s [mm]
+049B 0    Rain 24 hour: BCD 100s [mm]
+049C 0    Rain 24 hour: BCD 1000s [mm]
+049D 8    Rain max 24 hour: BCD 0.01s [mm]
+049E 9    Rain max 24 hour: BCD 0.1s [mm]
+049F 8    Rain max 24 hour: BCD 1s [mm]
+04A0 2    Rain max 24 hour: BCD 10s [mm]
+04A1 1    Rain max 24 hour: BCD 100s [mm]
+04A2 0    Rain max 24 hour: BCD 1000s [mm]
+04A3 9    Time max rain 24h, minutes BCD 1s
+04A4 5    Time max rain 24h, minutes BCD 10s
+04A5 4    Time max rain 24h, hours BCD 1s
+04A6 1    Time max rain 24h, hours BCD 10s
+04A7 1    Date max rain 24h, BCD day 1s
+04A8 2    Date max rain 24h, BCD day 10s
+04A9 4    Date max rain 24h, BCD month 1s
 04AA 0    Date max rain 24h, BCD month 10s
-04AB 3    Date max rain 24h , BCD year 1s 
-04AC 0    Date max rain 24h, BCD year 10s 
+04AB 3    Date max rain 24h , BCD year 1s
+04AC 0    Date max rain 24h, BCD year 10s
 04AD 0
 04AE 0    Alarm Rain 24h, BCD 0.01 [mm] (probably not really used)
 04AF 0    Alarm Rain 24h, BCD 0.1 [mm]
-04B0 7    Alarm Rain 24h, BCD 1 [mm]  
-04B1 0    Alarm Rain 24h, BCD 10 [mm] 
+04B0 7    Alarm Rain 24h, BCD 1 [mm]
+04B1 0    Alarm Rain 24h, BCD 10 [mm]
 04B2 0    Alarm Rain 24h, BCD 100 [mm]
 04B3 0    Alarm Rain 24h, BCD 1000 [mm]
 
 RAIN 1 HOUR
 04B4 0    Rain 1 hour: BCD 0.01s [mm]
 04B5 0    Rain 1 hour: BCD 0.1s [mm]
-04B6 0    Rain 1 hour: BCD 1s [mm] 
-04B7 0    Rain 1 hour: BCD 10s [mm] 
-04B8 0    Rain 1 hour: BCD 100s [mm] 
-04B9 0    Rain 1 hour: BCD 1000s [mm] 
-04BA 6    Rain max 1 hour: BCD 0.01s [mm] 
-04BB 4    Rain max 1 hour: BCD 0.1s [mm]  
-04BC 8    Rain max 1 hour: BCD 1s [mm]    
-04BD 2    Rain max 1 hour: BCD 10s [mm]   
-04BE 1    Rain max 1 hour: BCD 100s [mm]  
-04BF 0    Rain max 1 hour: BCD 1000s [mm] 
-04C0 8    Time max rain 1h, minutes BCD 1s    
-04C1 0    Time max rain 1h, minutes BCD 10s   
-04C2 6    Time max rain 1h, hours BCD 1s      
-04C3 1    Time max rain 1h, hours BCD 10s     
-04C4 0    Date max rain 1h, BCD day 1s    
-04C5 2    Date max rain 1h, BCD day 10s   
-04C6 4    Date max rain 1h, BCD month 1s  
-04C7 0    Date max rain 1h, BCD month 10s 
-04C8 3    Date max rain 1h , BCD year 1s   
-04C9 0    Date max rain 1h, BCD year 10s  
-04CA 0    
+04B6 0    Rain 1 hour: BCD 1s [mm]
+04B7 0    Rain 1 hour: BCD 10s [mm]
+04B8 0    Rain 1 hour: BCD 100s [mm]
+04B9 0    Rain 1 hour: BCD 1000s [mm]
+04BA 6    Rain max 1 hour: BCD 0.01s [mm]
+04BB 4    Rain max 1 hour: BCD 0.1s [mm]
+04BC 8    Rain max 1 hour: BCD 1s [mm]
+04BD 2    Rain max 1 hour: BCD 10s [mm]
+04BE 1    Rain max 1 hour: BCD 100s [mm]
+04BF 0    Rain max 1 hour: BCD 1000s [mm]
+04C0 8    Time max rain 1h, minutes BCD 1s
+04C1 0    Time max rain 1h, minutes BCD 10s
+04C2 6    Time max rain 1h, hours BCD 1s
+04C3 1    Time max rain 1h, hours BCD 10s
+04C4 0    Date max rain 1h, BCD day 1s
+04C5 2    Date max rain 1h, BCD day 10s
+04C6 4    Date max rain 1h, BCD month 1s
+04C7 0    Date max rain 1h, BCD month 10s
+04C8 3    Date max rain 1h, BCD year 1s
+04C9 0    Date max rain 1h, BCD year 10s
+04CA 0
 04CB 0    Alarm Rain 1h, BCD 0.01 [mm] (probably not really used)
-04CC 7    Alarm Rain 1h, BCD 0.1 [mm] 
-04CD 0    Alarm Rain 1h, BCD 1 [mm]   
-04CE 0    Alarm Rain 1h, BCD 10 [mm]  
-04CF 0    Alarm Rain 1h, BCD 100 [mm] 
+04CC 7    Alarm Rain 1h, BCD 0.1 [mm]
+04CD 0    Alarm Rain 1h, BCD 1 [mm]
+04CE 0    Alarm Rain 1h, BCD 10 [mm]
+04CF 0    Alarm Rain 1h, BCD 100 [mm]
 04D0 0    Alarm Rain 1h, BCD 1000 [mm]
-04D1 2    
+04D1 2
 
 RAIN TOTAL
 04D2 2    Rain total: BCD 0.01s [mm]
-04D3 5    Rain total: BCD 0.1s [mm] 
-04D4 4    Rain total: BCD 1s [mm]   
-04D5 4    Rain total: BCD 10s [mm]  
-04D6 1    Rain total: BCD 100s [mm] 
+04D3 5    Rain total: BCD 0.1s [mm]
+04D4 4    Rain total: BCD 1s [mm]
+04D5 4    Rain total: BCD 10s [mm]
+04D6 1    Rain total: BCD 100s [mm]
 04D7 0    Rain total: BCD 1000s [mm]
-04D8 0    Time for reset of rain total, minutes BCD 1s   
-04D9 4    Time for reset of rain total, minutes BCD 10s  
-04DA 3    Time for reset of rain total, hours BCD 1s     
-04DB 2    Time for reset of rain total, hours BCD 10s    
-04DC 4    Date for reset of rain total, BCD day 1s   
-04DD 1    Date for reset of rain total, BCD day 10s  
-04DE 4    Date for reset of rain total, BCD month 1s 
+04D8 0    Time for reset of rain total, minutes BCD 1s
+04D9 4    Time for reset of rain total, minutes BCD 10s
+04DA 3    Time for reset of rain total, hours BCD 1s
+04DB 2    Time for reset of rain total, hours BCD 10s
+04DC 4    Date for reset of rain total, BCD day 1s
+04DD 1    Date for reset of rain total, BCD day 10s
+04DE 4    Date for reset of rain total, BCD month 1s
 04DF 0    Date for reset of rain total, BCD month 10s
-04E0 3    Date for reset of rain total , BCD year 1s 
-04E1 0    Date for reset of rain total, BCD year 10s 
+04E0 3    Date for reset of rain total , BCD year 1s
+04E1 0    Date for reset of rain total, BCD year 10s
 04E2 F
 04E3 F
 04E4 F
@@ -1291,68 +1297,68 @@ RAIN TOTAL
 04E9 0
 04EA 0
 04EB 0
-04EC 0  
-04ED 0  
+04EC 0
+04ED 0
 WIND MIN/MAX
 04EE 0    Minimum wind: binary nibble 0, nnnn/360 [m/s]
-04EF 0    Minimum wind: binary nibble 1, -             
-04F0 0    Minimum wind: binary nibble 2, -             
-04F1 0    Minimum wind: binary nibble 3, -             
-04F2 0    
-04F3 0    
+04EF 0    Minimum wind: binary nibble 1, -
+04F0 0    Minimum wind: binary nibble 2, -
+04F1 0    Minimum wind: binary nibble 3, -
+04F2 0
+04F3 0
 04F4 C    Maximum wind: binary nibble 0, nnnn/360 [m/s]
-04F5 D    Maximum wind: binary nibble 1, -             
-04F6 3    Maximum wind: binary nibble 2, -             
-04F7 2    Maximum wind: binary nibble 3, -             
+04F5 D    Maximum wind: binary nibble 1, -
+04F6 3    Maximum wind: binary nibble 2, -
+04F7 2    Maximum wind: binary nibble 3, -
 04F8 6    Time min wind, minutes BCD 1s
 04F9 2    Time min wind, minutes BCD 10s
-04FA 3    Time min wind, hours BCD 1s 
+04FA 3    Time min wind, hours BCD 1s
 04FB 0    Time min wind, hours BCD 10s
-04FC 4    Date min wind, BCD day 1s  
+04FC 4    Date min wind, BCD day 1s
 04FD 2    Date min wind, BCD day 10s
 04FE 4    Date min wind, BCD month 1s
 04FF 0    Date min wind, BCD month 10s
 0500 3    Date min wind, BCD year 1s
 0501 0    Date min wind, BCD year 10s
-0502 5    Time max wind, minutes BCD 1s 
+0502 5    Time max wind, minutes BCD 1s
 0503 2    Time max wind, minutes BCD 10s
-0504 3    Time max wind, hours BCD 1s   
-0505 0    Time max wind, hours BCD 10s  
-0506 4    Date max wind, BCD day 1s   
-0507 2    Date max wind, BCD day 10s  
-0508 4    Date max wind, BCD month 1s 
+0504 3    Time max wind, hours BCD 1s
+0505 0    Time max wind, hours BCD 10s
+0506 4    Date max wind, BCD day 1s
+0507 2    Date max wind, BCD day 10s
+0508 4    Date max wind, BCD month 1s
 0509 0    Date max wind, BCD month 10s
-050A 3    Date max wind, BCD year 1s  
-050B 0    Date max wind, BCD year 10s 
-050C 0    
-050D 0    
+050A 3    Date max wind, BCD year 1s
+050B 0    Date max wind, BCD year 10s
+050C 0
+050D 0
 
 WIND ALARM (Read Only - Set values at 533-535 and 538-53A)
 050E 0    Low wind alarm setting (Read Only): binary nibble 0 [km/h / 100]
 050F 0    Low wind alarm setting (Read Only): binary nibble 1 [km/h / 100]
 0510 0    Low wind alarm setting (Read Only): binary nibble 2 [km/h / 100]
 0511 0    Low wind alarm setting (Read Only): binary nibble 3 [km/h / 100]
-0512 F    
-0513 F    
+0512 F
+0513 F
 0514 7    Low wind alarm setting (Read Only): binary nibble 0 [km/h / 100]
 0515 6    Low wind alarm setting (Read Only): binary nibble 1 [km/h / 100]
 0516 1    Low wind alarm setting (Read Only): binary nibble 2 [km/h / 100]
 0517 0    Low wind alarm setting (Read Only): binary nibble 3 [km/h / 100]
-0518 0  
-0519 0    Alarmed windspeed (or current if no alarm): BCD 0.1s [m/s] 
+0518 0
+0519 0    Alarmed windspeed (or current if no alarm): BCD 0.1s [m/s]
 051A 0    Alarmed windspeed (or current if no alarm): BCD 1s [m/s]
 051B 0    Alarmed windspeed (or current if no alarm): BCD 10s [m/s]
-051C 0  
-051D 0  
-051E 0  
-051F 0  
-0520 0  
-0521 0  
-0522 0  
-0523 5  
-0524 5  
-0525 2  
-0526 0  
+051C 0
+051D 0
+051E 0
+051F 0
+0520 0
+0521 0
+0522 0
+0523 5
+0524 5
+0525 2
+0526 0
 
 WIND SPEED AND DIRECTION
 0527 0    Wind overflow flag: 0 = normal
@@ -1370,13 +1376,13 @@ WIND SPEED AND DIRECTION
 
 WIND ALARM SETTING (Changing this causes 50E-511 or 514-517 to be updated)
 0533 0    Low wind alarm setting: BCD 0.1s [m/s]
-0534 0    Low wind alarm setting: BCD 1s [m/s]  
-0535 0    Low wind alarm setting: BCD 10s [m/s] 
-0536 0    
+0534 0    Low wind alarm setting: BCD 1s [m/s]
+0535 0    Low wind alarm setting: BCD 10s [m/s]
+0536 0
 0537 0
 0538 0    High wind alarm setting: BCD 0.1s [m/s]
-0539 1    High wind alarm setting: BCD 1s [m/s]  
-053A 0    High wind alarm setting: BCD 10s [m/s] 
+0539 1    High wind alarm setting: BCD 1s [m/s]
+053A 0    High wind alarm setting: BCD 10s [m/s]
 053B 0
 053C F
 053D F
@@ -1395,14 +1401,14 @@ WIND ALARM SETTING (Changing this causes 50E-511 or 514-517 to be updated)
 054A F
 054B 0
 
-HF Reception, 550/54F start value: 0F=cable, 3F=lost, FF=Wireless 
-054C D 
+HF Reception, 550/54F start value: 0F=cable, 3F=lost, FF=Wireless
+054C D
 054D 0    Connection Type: 0=Cable, 3=lost, F=Wireless
-054E 0 
+054E 0
 054F C    Countdown time to next datBinary nibble 0, [0.5 sec]
 0550 0    Countdown time to next datBinary nibble 1, [0.5 sec]
-0551 0 
-0552 0 
+0551 0
+0552 0
 0553 0
 0554 0
 0555 0
@@ -1543,21 +1549,21 @@ AIR PRESSURE
 05DA 1    Absolute air pressure: BCD 10s [hPa]
 05DB 0    Absolute air pressure: BCD 100s [hPa]
 05DC 1    Absolute air pressure: BCD 1000s [hPa]
-05DD 0  
-05DE 0  
-05DF 0  
-05E0 3  
-05E1 0  
+05DD 0
+05DE 0
+05DF 0
+05E0 3
+05E1 0
 05E2 4    Relative air pressure: BCD 0.1s [hPa]
 05E3 8    Relative air pressure: BCD 1s [hPa]
 05E4 1    Relative air pressure: BCD 10s [hPa]
 05E5 0    Relative air pressure: BCD 100s [hPa]
 05E6 1    Relative air pressure: BCD 1000s [hPa]
-05E7 7  
-05E8 0  
-05E9 0  
-05EA 3  
-05EB 0  
+05E7 7
+05E8 0
+05E9 0
+05EA 3
+05EB 0
 05EC 2    Air pressure correction: BCD 0.1s [hPa] offset 1000
 05ED 2    Air pressure correction: BCD 1s [hPa] offset 1000
 05EE 0    Air pressure correction: BCD 10s [hPa] offset 1000
@@ -1568,66 +1574,66 @@ AIR PRESSURE
 05F3 0
 05F4 0
 05F5 1
-05F6 0    Absolute air pressure minimum: BCD 0.1s [hPa] 
-05F7 3    Absolute air pressure minimum: BCD 1s [hPa]   
-05F8 1    Absolute air pressure minimum: BCD 10s [hPa]  
-05F9 0    Absolute air pressure minimum: BCD 100s [hPa] 
+05F6 0    Absolute air pressure minimum: BCD 0.1s [hPa]
+05F7 3    Absolute air pressure minimum: BCD 1s [hPa]
+05F8 1    Absolute air pressure minimum: BCD 10s [hPa]
+05F9 0    Absolute air pressure minimum: BCD 100s [hPa]
 05FA 1    Absolute air pressure minimum: BCD 1000s [hPa]
-05FB 1                                          
-05FC 9                                          
-05FD 9                                          
-05FE 2                                          
-05FF 0                                          
-0600 2    Relative air pressure minimum: BCD 0.1s [hPa] 
-0601 5    Relative air pressure minimum: BCD 1s [hPa]   
-0602 1    Relative air pressure minimum: BCD 10s [hPa]  
-0603 0    Relative air pressure minimum: BCD 100s [hPa] 
+05FB 1
+05FC 9
+05FD 9
+05FE 2
+05FF 0
+0600 2    Relative air pressure minimum: BCD 0.1s [hPa]
+0601 5    Relative air pressure minimum: BCD 1s [hPa]
+0602 1    Relative air pressure minimum: BCD 10s [hPa]
+0603 0    Relative air pressure minimum: BCD 100s [hPa]
 0604 1    Relative air pressure minimum: BCD 1000s [hPa]
 0605 7
 0606 9
 0607 9
 0608 2
 0609 0
-060A 6    Absolute air pressure maximum: BCD 0.1s [hPa] 
-060B 4    Absolute air pressure maximum: BCD 1s [hPa]   
-060C 3    Absolute air pressure maximum: BCD 10s [hPa]  
-060D 0    Absolute air pressure maximum: BCD 100s [hPa] 
+060A 6    Absolute air pressure maximum: BCD 0.1s [hPa]
+060B 4    Absolute air pressure maximum: BCD 1s [hPa]
+060C 3    Absolute air pressure maximum: BCD 10s [hPa]
+060D 0    Absolute air pressure maximum: BCD 100s [hPa]
 060E 1    Absolute air pressure maximum: BCD 1000s [hPa]
-060F 5                                                  
-0610 5                                                  
-0611 0                                                  
-0612 3                                                  
-0613 0                                                  
-0614 8    Relative air pressure maximum: BCD 0.1s [hPa] 
-0615 6    Relative air pressure maximum: BCD 1s [hPa]   
-0616 3    Relative air pressure maximum: BCD 10s [hPa]  
-0617 0    Relative air pressure maximum: BCD 100s [hPa] 
+060F 5
+0610 5
+0611 0
+0612 3
+0613 0
+0614 8    Relative air pressure maximum: BCD 0.1s [hPa]
+0615 6    Relative air pressure maximum: BCD 1s [hPa]
+0616 3    Relative air pressure maximum: BCD 10s [hPa]
+0617 0    Relative air pressure maximum: BCD 100s [hPa]
 0618 1    Relative air pressure maximum: BCD 1000s [hPa]
 0619 1
 061A 6
 061B 0
 061C 3
 061D 0
-061E 2    Time min air pressure, minutes BCD 1s 
+061E 2    Time min air pressure, minutes BCD 1s
 061F 0    Time min air pressure, minutes BCD 10s
-0620 5    Time min air pressure, hours BCD 1s   
-0621 0    Time min air pressure, hours BCD 10s  
-0622 3    Date min air pressure, BCD day 1s     
-0623 2    Date min air pressure, BCD day 10s    
-0624 4    Date min air pressure, BCD month 1s   
-0625 0    Date min air pressure, BCD month 10s  
-0626 3    Date min air pressure, BCD year 1s    
-0627 0    Date min air pressure, BCD year 10s   
-0628 6    Time max air pressure, minutes BCD 1s 
+0620 5    Time min air pressure, hours BCD 1s
+0621 0    Time min air pressure, hours BCD 10s
+0622 3    Date min air pressure, BCD day 1s
+0623 2    Date min air pressure, BCD day 10s
+0624 4    Date min air pressure, BCD month 1s
+0625 0    Date min air pressure, BCD month 10s
+0626 3    Date min air pressure, BCD year 1s
+0627 0    Date min air pressure, BCD year 10s
+0628 6    Time max air pressure, minutes BCD 1s
 0629 4    Time max air pressure, minutes BCD 10s
-062A 2    Time max air pressure, hours BCD 1s   
-062B 0    Time max air pressure, hours BCD 10s  
-062C 8    Date max air pressure, BCD day 1s     
-062D 1    Date max air pressure, BCD day 10s    
-062E 4    Date max air pressure, BCD month 1s   
-062F 0    Date max air pressure, BCD month 10s  
-0630 3    Date max air pressure, BCD year 1s    
-0631 0    Date max air pressure, BCD year 10s   
+062A 2    Time max air pressure, hours BCD 1s
+062B 0    Time max air pressure, hours BCD 10s
+062C 8    Date max air pressure, BCD day 1s
+062D 1    Date max air pressure, BCD day 10s
+062E 4    Date max air pressure, BCD month 1s
+062F 0    Date max air pressure, BCD month 10s
+0630 3    Date max air pressure, BCD year 1s
+0631 0    Date max air pressure, BCD year 10s
 0632 4
 0633 1
 0634 6
@@ -1659,8 +1665,8 @@ AIR PRESSURE
 064E 3
 064F 0
 0650 0   High Alarm air pressure, BCD 0.1 [hPa]
-0651 1   High Alarm air pressure, BCD 1 [hPa]  
-0652 4   High Alarm air pressure, BCD 10 [hPa] 
+0651 1   High Alarm air pressure, BCD 1 [hPa]
+0652 4   High Alarm air pressure, BCD 10 [hPa]
 0653 0   High Alarm air pressure, BCD 100 [hPa]
 0654 1   High Alarm air pressure, BCD 1000 [hPa]
 0655 4
@@ -1758,49 +1764,49 @@ AIR PRESSURE
 06B1 4
 
 HISTORY SETTINGS
-06B2 1    History saving interval: Binary nibble 0 [minutes] 
+06B2 1    History saving interval: Binary nibble 0 [minutes]
 06B3 0    History saving interval: Binary nibble 1 [minutes]
 06B4 0    History saving interval: Binary nibble 2 [minutes]
 06B5 1    Countdown to next saving: Binary nibble 0 [minutes]
 06B6 0    Countdown to next saving: Binary nibble 1 [minutes]
 06B7 0    Countdown to next saving: Binary nibble 2 [minutes]
-06B8 6    Time last record, minutes BCD 1s 
+06B8 6    Time last record, minutes BCD 1s
 06B9 2    Time last record, minutes BCD 10s
-06BA 3    Time last record, hours BCD 1s   
-06BB 0    Time last record, hours BCD 10s  
-06BC 4    Date last record, BCD day 1s     
-06BD 2    Date last record, BCD day 10s    
-06BE 4    Date last record, BCD month 1s   
-06BF 0    Date last record, BCD month 10s  
-06C0 3    Date last record, BCD year 1s    
-06C1 0    Date last record, BCD year 10s   
+06BA 3    Time last record, hours BCD 1s
+06BB 0    Time last record, hours BCD 10s
+06BC 4    Date last record, BCD day 1s
+06BD 2    Date last record, BCD day 10s
+06BE 4    Date last record, BCD month 1s
+06BF 0    Date last record, BCD month 10s
+06C0 3    Date last record, BCD year 1s
+06C1 0    Date last record, BCD year 10s
 06C2 6    Pointer to last written Record: Binary nibble 0 [Range 00-AE]
 06C3 9    Pointer to last written Record: Binary nibble 1
 06C4 F    Number of Records: Binary nibble 0 [Range 00-AF]
-06C5 A    Number of Records: Binary nibble 1 
+06C5 A    Number of Records: Binary nibble 1
 
 HISTORY
-4,3,2,1,0: Indoor and outdoor temperature 
-Tindoor = (value % 1000)/10 - 30 [C] 
-Toutdoor = (value - (value % 1000))/10000 - 30 [C] 
-Where % is the modulus operator. 
+4,3,2,1,0: Indoor and outdoor temperature
+Tindoor = (value % 1000)/10 - 30 [C]
+Toutdoor = (value - (value % 1000))/10000 - 30 [C]
+Where % is the modulus operator.
 
-9,8,7,6,5: Absolute Air Pressure and Indoor Humidity. 
-Pressure= 1000 + (value % 10000)/10. If pressure is greater than or equal to 1500 then you subtract 1000. 
-Indoor humidity =(value-(value % 10000))/10000 
+9,8,7,6,5: Absolute Air Pressure and Indoor Humidity.
+Pressure= 1000 + (value % 10000)/10. If pressure is greater than or equal to 1500 then you subtract 1000.
+Indoor humidity =(value-(value % 10000))/10000
 
-11,10: Outdoor Humidity in plain human readable BCD 
+11,10: Outdoor Humidity in plain human readable BCD
 
-14,13,12: Rain. (RAINCOUNTn) 
-The value is binary and steps 0.518 mm/step. 
-The absolute value does not seem to be related to anything else than an internal "household" value inside the station. 
-Every period the current 12-bit rain count value is stored as history data. 
-You use it by keeping a reference total rain value RAINref, the corresponding reference count RAINCOUNTref. 
-RAINtotal = RAINref + (RAINCOUNTn - RAINCOUNTref)*0.518 [mm] 
+14,13,12: Rain. (RAINCOUNTn)
+The value is binary and steps 0.518 mm/step.
+The absolute value does not seem to be related to anything else than an internal "household" value inside the station.
+Every period the current 12-bit rain count value is stored as history data.
+You use it by keeping a reference total rain value RAINref, the corresponding reference count RAINCOUNTref.
+RAINtotal = RAINref + (RAINCOUNTn - RAINCOUNTref)*0.518 [mm]
 
-17-16-15: Windspeed = value in binary / 10 [m/s] 
+17-16-15: Windspeed = value in binary / 10 [m/s]
 
-18: Wind direction = value * 22.5 degrees. North is 0 and degrees are clockwise on the circle. 
+18: Wind direction = value * 22.5 degrees. North is 0 and degrees are clockwise on the circle.
 
 
 
