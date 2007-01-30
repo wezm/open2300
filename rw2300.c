@@ -1,11 +1,11 @@
 /*  open2300  - rw2300.c library functions
  *  This is a library of functions common to Linux and Windows
  *  
- *  Version 1.10
+ *  Version 1.11
  *  
  *  Control WS2300 weather station
  *  
- *  Copyright 2003-2005, Kenneth Lavrsen
+ *  Copyright 2003-2007, Kenneth Lavrsen
  *  This program is published under the GNU General Public license
  */
 
@@ -2396,11 +2396,13 @@ int get_configuration(struct config_type *config, char *path)
 	strcpy(config->citizen_weather_id, "CW0000");               // Citizen Weather ID
 	strcpy(config->citizen_weather_latitude, "5540.12N");       // latitude default Glostrup, DK
 	strcpy(config->citizen_weather_longitude, "01224.60E");     // longitude default, Glostrup, DK
-	strcpy(config->aprs_host[0].name, "aprswest.net");         // host1 name
-	config->aprs_host[0].port = 23;                            // host1 port
-	strcpy(config->aprs_host[1].name, "indiana.aprs2.net");    // host2 name
-	config->aprs_host[1].port = 23;                            // host2 port
-	config->num_hosts = 2;                                     // default number of defined hosts
+	strcpy(config->aprs_host[0].name, "rotate.aprs.net");       // host1 name
+	config->aprs_host[0].port = 14580;                          // host1 port
+	strcpy(config->aprs_host[1].name, "first.aprs.net");        // host2 name
+	config->aprs_host[1].port = 14580;                          // host2 port
+	strcpy(config->aprs_host[2].name, "second.aprs.net");       // host2 name
+	config->aprs_host[2].port = 14580;                          // host2 port
+	config->num_hosts = 0;                                      // will not count yet
 	strcpy(config->weather_underground_id, "WUID");             // Weather Underground ID 
 	strcpy(config->weather_underground_password, "WUPassword"); // Weather Underground Password
 	strcpy(config->timezone, "1");                              // Timezone, default CET
@@ -2582,6 +2584,12 @@ int get_configuration(struct config_type *config, char *path)
 			continue;
 		}
 		
+	}
+	
+	// Expose the default host names if no configuration file was found or
+	// one was supplied but it didn't contain any APRS_SERVER entries.
+	if (0 == config->num_hosts) {
+		config->num_hosts = 3;
 	}
 
 	return (0);
