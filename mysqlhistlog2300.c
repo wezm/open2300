@@ -1,6 +1,6 @@
 /*  open2300 - histlog2300.c
  *  
- *  Version 1.12 (open200 1.11) Lars Hinrichsen
+ *  Version 1.15 (open200 1.11) Lars Hinrichsen
  *  
  *  Control WS2300 weather station
  *  
@@ -11,7 +11,9 @@
  *  Version 1.12 
  *  - Code refactored
  * 
- *  2006 July 19 (included in open2300 1.11)
+ *  1,14 2006  July 19 (included in open2300 1.11)
+ *  1.15 2007  July 19  EmilianoParasassi
+ *             http://www.lavrsen.dk/twiki/bin/view/Open2300/MysqlPatch2 
  */
 #include <mysql.h>
 #include "rw2300.h"
@@ -31,7 +33,7 @@ void print_usage(void)
 {
 	printf("\n");
 	printf("mysqlhistlog2300 - Log history data from WS-2300 to MySQL.\n");
-	printf("Version %s (C)2005 Kenneth Lavrsen, Lars Hinrichsen.\n", VERSION);
+	printf("Version %s (C)2007 Kenneth Lavrsen, Lars Hinrichsen.\n", VERSION);
 	printf("This program is released under the GNU General Public License (GPL)\n\n");
 	printf("Usage:\n");
 	printf("mysqlhistlog2300 config_filename\n");
@@ -56,8 +58,8 @@ int main(int argc, char *argv[])
 	MYSQL mysql, *mysql_connection;
 	int mysql_state;
 	char mysql_insert_stmt[512] = 
-		"INSERT INTO weather(timestamp, rec_date, rec_time, temp_in,temp_out, dewpoint, rel_hum_in, "
-		"rel_hum_out, windspeed, wind_angle, wind_direction,wind_chill, rain_total, rel_pressure)";
+		"INSERT INTO weather(datetime, temp_in, temp_out, dewpoint, rel_hum_in, "
+		"rel_hum_out, wind_speed, wind_angle, wind_direction,wind_chill, rain_total, rel_pressure)";
 	char mysql_values_stmt[512], mysql_stmt[1024];
 
 	int interval, countdown, no_records;
@@ -182,7 +184,7 @@ int main(int argc, char *argv[])
 		// If humidity is > 100 the record is skipped
 		if(humidity_out < 100)
 		{
-			strftime(datestring,sizeof(datestring),"\"%Y%m%d%H%M%S\",\"%Y-%m-%d\",\"%H:%M:%S\"",
+			strftime(datestring,sizeof(datestring),"\"%Y-%m-%d %H:%M:%S\"",
 			         &time_lastrecord_tm);
 			// Line up all value in order of appearance in the database
 			sprintf(mysql_values_stmt," VALUES(%s", datestring);

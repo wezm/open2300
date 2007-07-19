@@ -1,6 +1,6 @@
 /*       mysql2300.c
  *
- *       Open2300 1.11 - mysql2300 1.4
+ *       Open2300 1.11 - mysql2300 1.6
  *
  *       Get data from WS2300 weather station
  *       and add them to MySQL database
@@ -24,12 +24,16 @@
  *
  *  1.3  As 1.2
  *
- *  1.4  2006 Feb 24  EmilianoParasassi
+ *  1.4  2006 Feb 24  Emiliano Parasassi
  *       Enhancement of mysql2300 program. It removes 2 redundant fields
  *       and let you to perform custom query more easily.
  *
  *  1.5  2006 Jul 19  Kenneth Lavrsen
  *       Replaced a risky use of sprintf with safer strcat
+ *
+ *  1.6  2007 Jul 19  Emiliano Parasassi
+ *       http://www.lavrsen.dk/twiki/bin/view/Open2300/MysqlPatch2
+ *       Plus updates in ALTER TABLE to match patch from Rolan Yang
  */
 
 #include <mysql.h>
@@ -43,39 +47,23 @@
  *
  * The open2300.conf config file must contain the following parameters
  * 
- * Table structure for table `weather`
+ * Table structure for table `weather` is shown in mysql2300.sql file
  * 
-DROP TABLE IF EXISTS `weather`;
-CREATE TABLE `weather` (
-  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
-  `temp_in` decimal(3,1) NOT NULL default '0.0',
-  `temp_out` decimal(3,1) NOT NULL default '0.0',
-  `dewpoint` decimal(3,1) NOT NULL default '0.0',
-  `rel_hum_in` tinyint(3) NOT NULL default '0',
-  `rel_hum_out` tinyint(3) NOT NULL default '0',
-  `wind_speed` decimal(3,1) NOT NULL default '0.0',
-  `wind_angle` decimal(3,1) NOT NULL default '0.0',
-  `wind_direction` char(3) NOT NULL default '',
-  `wind_chill` decimal(3,1) NOT NULL default '0.0',
-  `rain_1h` decimal(3,1) NOT NULL default '0.0',
-  `rain_24h` decimal(3,1) NOT NULL default '0.0',
-  `rain_total` decimal(4,1) NOT NULL default '0.0',
-  `rel_pressure` decimal(4,1) NOT NULL default '0.0',
-  `tendency` varchar(7) NOT NULL default '',
-  `forecast` varchar(6) NOT NULL default '',
-  UNIQUE KEY `timestamp` (`datetime`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
  * If you already have the 'weather' table of the previous
  * release(<=1.3), launch these SQL commands to modify it correctly:
 
-ALTER TABLE `open2300`.`weather` MODIFY COLUMN `timestamp` DATETIME  DEFAULT '0000-00-00 00:00:00';
+ALTER TABLE `open2300`.`weather` MODIFY COLUMN `timestamp` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL;
 ALTER TABLE `open2300`.`weather` DROP COLUMN `rec_date`;
 ALTER TABLE `open2300`.`weather` DROP COLUMN `rec_time`;
-ALTER TABLE `open2300`.`weather` CHANGE COLUMN `timestamp` `datetime` DATETIME NOT NULL DEFAULT 0;
-ALTER TABLE `open2300`.`weather` CHANGE COLUMN `windspeed` `wind_speed` DECIMAL(3,1) NOT NULL DEFAULT 0;
-
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `timestamp`    `datetime`     DATETIME NOT NULL DEFAULT 0;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `windspeed`    `wind_speed`   DECIMAL(3,1) NOT NULL DEFAULT 0;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `rel_pressure` `rel_pressure` DECIMAL(5,1) NOT NULL;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `rain_total`   `rain_total`   DECIMAL(5,1) NOT NULL;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `wind_angle`   `wind_angle`   DECIMAL(4,1) NOT NULL;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `temp_in`      `temp_in`      DECIMAL(4,1) NOT NULL DEFAULT 0;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `temp_out`     `temp_out`     DECIMAL(4,1) NOT NULL DEFAULT 0;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `dewpoint`     `dewpoint`     DECIMAL(4,1) NOT NULL DEFAULT 0;
+ALTER TABLE `open2300`.`weather` CHANGE COLUMN `wind_chill`   `wind_chill`   DECIMAL(4,1) NOT NULL DEFAULT 0;
 
  * It takes one parameters. The config file name with path
  * If this parameter is omitted the program will look at the default paths

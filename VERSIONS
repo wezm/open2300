@@ -234,11 +234,25 @@
        alter table weather modify dewpoint decimal(4,1) not null default 0;
        alter table weather modify wind_chill decimal(4,1) not null default 0;
        
-1.11   2007 February - Kenneth Lavrsen
+1.11   2007 July - Kenneth Lavrsen
        - Fixed problem with opening an empty log file (fixed by Lars Hinrichsen)
        http://www.lavrsen.dk/twiki/bin/view/Open2300/EmptyFileSupport
        - Fixed problem with loading ARPS servers data from config. Also updated
        the default servers
+       - Added wind Gust feature
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/GustPatch
+       - Added mysqlhistlog feature (Lars Hinrichsen)
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/HistLog2MySQL
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/BugReport2006x04x17x075310
+       -  Enable operation on systems that have a blocking open (Andy Shaw and
+       PeterTattersall)
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/NonBlockingOpen
+       -  Skip Data Rubbish (Lars Hinrichsen)
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/SkipDataRubbish
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/BugReport2006x04x17x075310
+       - Changed timestamp to one field (EmilianoParasassi
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/MysqlPatch
+       http://www.lavrsen.dk/twiki/bin/view/Open2300/MysqlPatch2
 
        To-dos for future version
        - Make mysql2300 binary (help wanted)
