@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{	//if no valid log we set the date to 1 Jan 1990 0:00
-		time_lastlog_tm.tm_year = 1990;
+		time_lastlog_tm.tm_year = 90;
 		time_lastlog_tm.tm_mon = 0;
 		time_lastlog_tm.tm_mday = 1;
 		time_lastlog_tm.tm_hour = 0;
