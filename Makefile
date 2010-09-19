@@ -25,6 +25,7 @@ FETCHOBJ = fetch2300.o rw2300.o linux2300.o win2300.o
 WUOBJ = wu2300.o rw2300.o linux2300.o win2300.o
 CWOBJ = cw2300.o rw2300.o linux2300.o win2300.o
 DUMPOBJ = dump2300.o rw2300.o linux2300.o win2300.o
+DUMPCONFIGOBJ = dumpconfig2300.o rw2300.o linux2300.o win2300.o
 HISTOBJ = history2300.o rw2300.o linux2300.o win2300.o
 HISTLOGOBJ = histlog2300.o rw2300.o linux2300.o win2300.o
 DUMPBINOBJ = bin2300.o rw2300.o linux2300.o win2300.o
@@ -47,13 +48,16 @@ INSTALL = install
 
 ####### Build rules
 
-all: open2300 dump2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 light2300 interval2300 minmax2300 mysql2300 mysqlhistlog2300
+all: open2300 dump2300 dumpconfig2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 light2300 interval2300 minmax2300
 
 open2300 : $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(CC_LDFLAGS)
 	
 dump2300 : $(DUMPOBJ)
 	$(CC) $(CFLAGS) -o $@ $(DUMPOBJ) $(CC_LDFLAGS)
+	
+dumpconfig2300 : $(DUMPCONFIGOBJ)
+	$(CC) $(CFLAGS) -o $@ $(DUMPCONFIGOBJ) $(CC_LDFLAGS)
 	
 log2300 : $(LOGOBJ)
 	$(CC) $(CFLAGS) -o $@ $(LOGOBJ) $(CC_LDFLAGS) $(CC_WINFLAG)
