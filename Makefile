@@ -85,6 +85,9 @@ mysql2300:
 pgsql2300: $(PGSQLOBJ)
 	$(CC) $(CFLAGS) -o $@ $(PGSQLOBJ) $(CC_LDFLAGS) $(CC_WINFLAG) -I/usr/include/pgsql -L/usr/lib/pgsql -lpq
 
+sqlitelog2300:
+	$(CC) $(CFLAGS) -o sqlitelog2300 sqlitelog2300.c rw2300.c linux2300.c $(CC_LDFLAGS) $(CC_WINFLAG)  -lsqlite3
+
 light2300: $(LIGHTOBJ)
 	$(CC) $(CFLAGS) -o $@ $(LIGHTOBJ) $(CC_LDFLAGS)
 	
