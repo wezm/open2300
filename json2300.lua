@@ -31,11 +31,31 @@ end
 local weather = {}
 
 for row in stmt:nrows() do
-  print(row.datetime, row.temperature_out)
   weather.current = row
 end
 
 stmt:finalize()
+
+-- Get the weather history
+local sql = [[
+    SELECT strftime("%s", datetime) * 1000, temperature_in, temperature_out
+    FROM weather
+]]
+
+weather.history = {}
+for row in db:rows(sql) do
+    weather.history[#weather.history + 1] = row
+end
+
 db:close()
 
-print(json.encode(weather))
+-- write out JSON
+local jsonfile, err = io.open("weather.json", "w")
+if (jsonfile) then
+  jsonfile:write(json.encode(weather))
+  jsonfile:close()
+else
+  print("Unable to open JSON file for writing: " .. err)
+end
+
+--print(json.encode(weather))
