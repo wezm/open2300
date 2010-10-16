@@ -77,13 +77,13 @@ int arrindex(char *array[], const char *value)
 	char *const *match = bsearch_b(&value, array, arrlen(array), sizeof(char **), ^(const void *value1, const void *value2) {
 		char * const *a = value1;
 		char * const *b = value2;
-		printf("%s <=> %s\n", *a, *b);
+		//printf("%s <=> %s\n", *a, *b);
 		return strcmp(*a, *b);
 	});
 
 	if(match != NULL)
 	{
-		printf("Got match %ld\n", match - array);
+		//printf("Got match %ld\n", match - array);
 		return match - array;
 	}
 
@@ -132,7 +132,7 @@ void state_init(struct state* state, struct config_type *config, const char *db_
 	}
 	strncat(query, ")", QUERY_BUF_SIZE);
 
-	printf("%s\n", query);
+	//printf("%s\n", query);
 
 	/* Prepare the query */
 	int nByte = -1;
