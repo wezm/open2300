@@ -1,31 +1,25 @@
-/*       sqlitelog2300.c
+/*		 sqlitelog2300.c
  *
- *       Open2300 1.11 - sqlitelog2300 1.0
+ *		 Open2300 1.11 - sqlitelog2300 1.0
  *
- *       Get current data from WS2300 weather station
- *       and add store it in an SQLite database
+ *		 Get current data from WS2300 weather station
+ *		 and add store it in an SQLite database
  *
- *       Copyright 2010, Wesley Moore
+ *		 Copyright 2010, Wesley Moore
  *
- *       This program is published under the GNU General Public license
+ *		 This program is published under the GNU General Public license
  *
  */
 
 #include <sqlite3.h>
 #include "rw2300.h"
 
-struct state {
-	sqlite3 *db;
-	WEATHERSTATION station;
-	sqlite3_stmt *statement;
-};
-
 /********************************************************************
  * print_usage prints a short user guide
  *
- * Input:   none
+ * Input:	none
  *
- * Output:  prints to stderr
+ * Output:	prints to stderr
  *
  * Returns: void
  *
@@ -41,60 +35,39 @@ void print_usage(void)
 }
 
 /********************************************************************
- * arrlen   returns the number of strings in a NULL terminated array
- *          of strings.
- *
- * Input:   array
- *
- * Output:  None
- *
- * Returns: integer count of the number of string in array.
+ * The state struct stores the state of this program. It exists to
+ * allow clean shutdown in the event an error ocurrs.
  *
  ********************************************************************/
-int arrlen(char *array[])
-{
-	int i = 0;
-	while(array[i] != NULL) i++;
-	return i;
-}
+struct state {
+	sqlite3 *db;
+	WEATHERSTATION station;
+	sqlite3_stmt *statement;
+};
+
+/* QUERY_BUF_SIZE specifies the size in bytes for the SQL INSERT statement
+ * that is built */
+#define QUERY_BUF_SIZE 4096
 
 
 /********************************************************************
- * strindex returns the index of a value in a sorted NULL terminated
- *          array of strings.
+ * state_init initializes a state struct
  *
- * Input:   array, value to find
+ * Input:	Pointer to state structure to initialize
+ *			An open2300 configuration
+ *			The path to the SQLite database
+ *			A NULL terminated array of column names in the weather
+ *			table.
  *
- * Output:  None
+ * Output:	Initialized state structure
  *
- * Returns: integer index of the supplied value or NOT_FOUND if it
- *          wasn't found in the array.
+ * Returns: void
  *
  ********************************************************************/
-#define NOT_FOUND -1
-int arrindex(char *array[], const char *value)
-{
-	char *const *match = bsearch_b(&value, array, arrlen(array), sizeof(char **), ^(const void *value1, const void *value2) {
-		char * const *a = value1;
-		char * const *b = value2;
-		//printf("%s <=> %s\n", *a, *b);
-		return strcmp(*a, *b);
-	});
-
-	if(match != NULL)
-	{
-		//printf("Got match %ld\n", match - array);
-		return match - array;
-	}
-
-	return NOT_FOUND;
-}
-
-#define QUERY_BUF_SIZE 4096
 void state_init(struct state* state, struct config_type *config, const char *db_path, char * const *column_names)
 {
 	int i, rc;
-	char query[QUERY_BUF_SIZE + 1] = "";
+	char query[QUERY_BUF_SIZE + 1] = ""; /* +1 for trailing NUL */
 
 	/* Connect to the weather station */
 	state->station = open_weatherstation(config->serial_device_name);
@@ -132,8 +105,6 @@ void state_init(struct state* state, struct config_type *config, const char *db_
 	}
 	strncat(query, ")", QUERY_BUF_SIZE);
 
-	//printf("%s\n", query);
-
 	/* Prepare the query */
 	int nByte = -1;
 	rc = sqlite3_prepare_v2(state->db, query, nByte, &state->statement, NULL);
@@ -144,6 +115,18 @@ void state_init(struct state* state, struct config_type *config, const char *db_
 	}
 }
 
+/********************************************************************
+ * state_finish finalizes a state struct. The struct is not usable
+ * after this function has been called on it. This function should
+ * be called to free resources when the state is no longer needed.
+ *
+ * Input:	Pointer to state structure to finalize
+ *
+ * Output:	Finalized state structure
+ *
+ * Returns: void
+ *
+ ********************************************************************/
 void state_finish(struct state* state)
 {
 	sqlite3_finalize(state->statement);
@@ -151,6 +134,19 @@ void state_finish(struct state* state)
 	close_weatherstation(state->station);
 }
 
+/********************************************************************
+ * check_rc ensures the passed return code (rc) from SQLite
+ * indicates success. If not it prints the current SQLite
+ * error message, finalizes the state and exits the program.
+ *
+ * Input:	Pointer to state structure to finalize
+ *			Return code from SQLite function
+ *
+ * Output:	Program exit if the return code indicates an error
+ *
+ * Returns: void
+ *
+ ********************************************************************/
 void check_rc(struct state* state, int rc)
 {
 	if(rc != SQLITE_OK) {
@@ -160,25 +156,21 @@ void check_rc(struct state* state, int rc)
 	}
 }
 
-// rc = sqlite3_bind_double(statement, i, temperature_indoor(ws2300, config.temperature_conv));
-//void bind_double(const char *column, )
-
 /********** MAIN PROGRAM ************************************************
  *
  * This program reads current weather data from a WS2300
- * and writes the data to a MySQL database.
+ * and writes the data to a SQLite database.
  *
  * The open2300.conf config file must contain the following parameters
  *
- * Table structure for table `weather` is shown in mysql2300.sql file
+ * Schema for table `weather` is shown in sqlitelog2300.sql file
  *
- * It takes one parameters. The config file name with path
+ * It takes two parameters. The path to an SQLite database that has had
+ * schema file loaded and an optional path to the open2300 config file.
  * If this parameter is omitted the program will look at the default paths
  * See the open2300.conf-dist file for info
  *
  ***********************************************************************/
-
-#define VALUE_BUF_SIZE 256
 
 int main(int argc, char *argv[])
 {
@@ -207,13 +199,9 @@ int main(int argc, char *argv[])
 		"wind_speed",
 		NULL
 	};
-
 	const char *directions[]= {"N","NNE","NE","ENE","E","ESE","SE","SSE",
-	                           "S","SSW","SW","WSW","W","WNW","NW","NNW"};
-
-	// char *value[VALUE_BUF_SIZE];
+							   "S","SSW","SW","WSW","W","WNW","NW","NNW"};
 	int rc;
-	// int i;
 
 	/* Read the configuration */
 	if(argc >= 3) {
@@ -227,8 +215,6 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	// printf("%d %s: %d\n", arrlen(columns), "wind_direction", sqlite3_bind_parameter_index(s.statement, "wind_direction"));
-
 	struct state s;
 	state_init(&s, &config, argv[1], columns);
 
@@ -238,74 +224,52 @@ int main(int argc, char *argv[])
 	/* TODO: add contraints to values and error out if invalid E.g. temp over 60 */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":temperature_in"), temperature_indoor(s.station, config.temperature_conv));
 	check_rc(&s, rc);
-	//sprintf(logline,"\'%.1f\',", temperature_indoor(ws2300, config.temperature_conv) );
 
 	/* OUTDOOR TEMPERATURE */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":temperature_out"), temperature_outdoor(s.station, config.temperature_conv));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", temperature_outdoor(ws2300, config.temperature_conv) );
-	// strcat(logline, tempstring);
 
 	/* READ DEWPOINT */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":dewpoint"), dewpoint(s.station, config.temperature_conv));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", dewpoint(ws2300, config.temperature_conv) );
-	// strcat(logline, tempstring);
 
 	/* READ RELATIVE HUMIDITY INDOOR */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rel_humidity_in"), humidity_indoor(s.station));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%d\',", humidity_indoor(ws2300) );
-	// strcat(logline, tempstring);
 
 	/* READ RELATIVE HUMIDITY OUTDOOR */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rel_humidity_out"), humidity_outdoor(s.station));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%d\',", humidity_outdoor(ws2300) );
-	// strcat(logline, tempstring);
 
 	/* READ WIND SPEED AND DIRECTION */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":wind_speed"), wind_all(s.station, config.wind_speed_conv_factor, &winddir_index, winddir));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", wind_all(ws2300, config.wind_speed_conv_factor, &tempint, winddir) );
-	// strcat(logline, tempstring);
+
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":wind_angle"), winddir[0]);
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',\'%s\',", winddir[0], directions[tempint]);
-	// strcat(logline, tempstring);
-	// int sqlite3_bind_text(sqlite3_stmt*, int, const char*, int n, void(*)(void*));
+
 	rc = sqlite3_bind_text(s.statement, sqlite3_bind_parameter_index(s.statement, ":wind_direction"), directions[winddir_index], -1, SQLITE_STATIC);
 	check_rc(&s, rc);
 
 	/* READ WINDCHILL */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":wind_chill"), windchill(s.station, config.temperature_conv));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", windchill(ws2300, config.temperature_conv) );
-	// strcat(logline, tempstring);
 
 	/* READ RAIN 1H */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rain_1h"), rain_1h(s.station, config.rain_conv_factor));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", rain_1h(ws2300, config.rain_conv_factor) );
-	// strcat(logline, tempstring);
 
 	/* READ RAIN 24H */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rain_24h"), rain_24h(s.station, config.rain_conv_factor));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", rain_24h(ws2300, config.rain_conv_factor) );
-	// strcat(logline, tempstring);
 
 	/* READ RAIN TOTAL */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rain_total"), rain_total(s.station, config.rain_conv_factor));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", rain_total(ws2300, config.rain_conv_factor) );
-	// strcat(logline, tempstring);
 
 	/* READ RELATIVE PRESSURE */
 	rc = sqlite3_bind_double(s.statement, sqlite3_bind_parameter_index(s.statement, ":rel_pressure"), rel_pressure(s.station, config.pressure_conv_factor));
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%.1f\',", rel_pressure(ws2300, config.pressure_conv_factor) );
-	// strcat(logline, tempstring);
 
 	/* READ TENDENCY AND FORECAST */
 	tendency_forecast(s.station, tendency, forecast);
@@ -313,12 +277,6 @@ int main(int argc, char *argv[])
 	check_rc(&s, rc);
 	rc = sqlite3_bind_text(s.statement, sqlite3_bind_parameter_index(s.statement, ":forecast"), forecast, -1, SQLITE_STATIC);
 	check_rc(&s, rc);
-	// sprintf(tempstring,"\'%s\',\'%s\'", tendency, forecast);
-	// strcat(logline, tempstring);
-
-	// /* Add the timestamp */
-	// rc = sqlite3_bind_text(s.statement, sqlite3_bind_parameter_index(s.statement, ":datetime"), "datetime('now')", -1, SQLITE_STATIC);
-	// check_rc(&s, rc);
 
 	/* Run the query */
 	rc = sqlite3_step(s.statement);
@@ -328,16 +286,6 @@ int main(int argc, char *argv[])
 		state_finish(&s);
 		exit(EXIT_FAILURE);
 	}
-
-	// sprintf(query, "INSERT INTO weather VALUES ( NOW(), %s )", logline);
-	//
-	// if (mysql_query(&mysql, query))
-	// {
-	// 	fprintf(stderr, "Could not insert row. %s %d: \%s \n",
-	// 	        query, mysql_errno(&mysql), mysql_error(&mysql));
-	// 	mysql_close(&mysql);
-	// 	exit(EXIT_FAILURE);
-	// }
 
 	state_finish(&s);
 	return(EXIT_SUCCESS);
