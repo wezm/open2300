@@ -1,9 +1,9 @@
 /*  openconfig2300 - dumpconfig2300.c
- *  
+ *
  *  Version 1.10
- *  
- *  Control WS2300 weather station
- *  
+ *
+ *  Dump the open2300 configuration
+ *
  *  Copyright 2010, Wesley Moore
  *  This program is published under the GNU General Public license
  */
@@ -15,14 +15,9 @@
 
 /********** MAIN PROGRAM ************************************************
  *
- * This program reads from a WS2300 weather station at a given address
- * range and write the data in a text file in human readable format.
- *
- * Just run the program without parameters
- * for usage.
- *
- * It uses the config file for device name.
- * Config file locations - see open2300.conf-dist
+ * This program prints out the content of the open2300 configuration
+ * file passed as the first argument or the first configuration file
+ * found in the standard search paths.
  *
  ***********************************************************************/
 int main(int argc, char *argv[])
@@ -34,31 +29,6 @@ int main(int argc, char *argv[])
 
 	// Get serial port from config file.
 	get_configuration(&config, config_path);
-
-	// struct config_type
-	// {
-	// 	char   serial_device_name[50];
-	// 	char   citizen_weather_id[30];
-	// 	char   citizen_weather_latitude[20];
-	// 	char   citizen_weather_longitude[20];
-	// 	hostdata aprs_host[MAX_APRS_HOSTS]; // max 6 possible aprs hosts 1 primary and 5 alternate
-	// 	int    num_hosts;					// total defined hosts
-	// 	char   weather_underground_id[30];
-	// 	char   weather_underground_password[50];
-	// 	char   timezone[6];                //not integer because of half hour time zones
-	// 	double wind_speed_conv_factor;     //from m/s to km/h or miles/hour
-	// 	int    temperature_conv;           //0=Celcius, 1=Fahrenheit
-	// 	double rain_conv_factor;           //from mm to inch
-	// 	double pressure_conv_factor;       //from hPa (=millibar) to mmHg
-	// 	char   mysql_host[50];             //Either localhost, IP address or hostname
-	// 	char   mysql_user[25];
-	// 	char   mysql_passwd[25];
-	// 	char   mysql_database[30];
-	// 	int    mysql_port;                 //0 works for local connection
-	// 	char   pgsql_connect[128];
-	// 	char   pgsql_table[25];
-	// 	char   pgsql_station[25];
-	// };
 
 	printf("serial_device_name\t%s\n",           config.serial_device_name);
 	printf("citizen_weather_id\t%s\n",           config.citizen_weather_id);
