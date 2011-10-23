@@ -19,6 +19,16 @@ libdir = ${prefix}/lib
 
 #########################################
 
+UNAME := $(shell uname)
+ifeq ($(UNAME), Darwin)
+LFLAGS = -shared -Wl,-dylib_install_name
+LSUFFIX = dylib
+endif
+ifeq ($(UNAME), Linux)
+LFLAGS = -shared -Wl,-soname
+LSUFFIX = so
+endif
+
 CC  = gcc
 LIB = lib2300
 LIB_C = rw2300.c linux2300.c
@@ -28,7 +38,6 @@ VERSION = 1.11
 
 CFLAGS = -Wall -O3 -DVERSION=\"$(VERSION)\"
 CC_LDFLAGS = -L. -lm -l2300
-LFLAGS = -shared -Wl,-soname
 INSTALL = install
 MAKE_EXEC = $(CC) $(CFLAGS) $@.c -o $@ $(CC_LDFLAGS)
 
@@ -38,8 +47,8 @@ all: open2300 dump2300 dumpconfig2300 log2300 fetch2300 wu2300 cw2300 history230
 
 lib2300 :
 	$(CC) -c -fPIC $(CFLAGS) $(LIB_C)
-	$(CC) $(LFLAGS),$@.so -o $@.so.$(VERSION) $(LIBOBJ)
-	ln -sf $@.so.$(VERSION) $@.so
+	$(CC) $(LFLAGS),$@.$(LSUFFIX) -o $@.$(LSUFFIX).$(VERSION) $(LIBOBJ)
+	ln -sf $@.$(LSUFFIX).$(VERSION) $@.$(LSUFFIX)
 
 open2300 : $(LIB)
 	$(MAKE_EXEC)
@@ -102,8 +111,8 @@ mysqlhistlog2300 : $(LIB)
 install:
 	mkdir -p $(bindir)
 	mkdir -p $(libdir)
-	$(INSTALL) $(LIB).so.$(VERSION) $(libdir)
-	ln -sf $(libdir)/$(LIB).so.$(VERSION) $(libdir)/$(LIB).so
+	$(INSTALL) $(LIB).$(LSUFFIX).$(VERSION) $(libdir)
+	ln -sf $(libdir)/$(LIB).$(LSUFFIX).$(VERSION) $(libdir)/$(LIB).$(LSUFFIX)
 	$(INSTALL) srv2300 $(bindir)
 	$(INSTALL) open2300 $(bindir)
 	$(INSTALL) dump2300 $(bindir)
@@ -123,4 +132,4 @@ uninstall:
 	rm -f $(libdir)/$(LIB).* $(bindir)/open2300 $(bindir)/dump2300 $(bindir)/log2300  $(bindir)/fetch2300 $(bindir)/srv2300 $(bindir)/wu2300 $(bindir)/cw2300 $(bindir)/xml2300 $(bindir)/light2300 $(bindir)/interval2300 $(bindir)/minmax2300 $(bindir)/histlog2300 $(bindir)/mysql2300 $(bindir)/mysqlhistlog2300
 
 clean:
-	rm -f *~ *.o *.so* open2300 dump2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 mysql2300 pgsql2300 light2300 interval2300 minmax2300 mysql2300 mysqlhistlog2300
+	rm -f *~ *.o *.$(LSUFFIX)* open2300 dump2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 mysql2300 pgsql2300 light2300 interval2300 minmax2300 mysql2300 mysqlhistlog2300
