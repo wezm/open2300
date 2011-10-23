@@ -36,10 +36,11 @@ LIBOBJ = rw2300.o linux2300.o
 
 VERSION = 1.11
 
-CFLAGS = -Wall -O3 -DVERSION=\"$(VERSION)\"
+MYCPPFLAGS = -DVERSION=\"$(VERSION)\"
+CFLAGS = -Wall -O3
 CC_LDFLAGS = -L. -lm -l2300
 INSTALL = install
-MAKE_EXEC = $(CC) $(CFLAGS) $@.c -o $@ $(CC_LDFLAGS)
+MAKE_EXEC = $(CC) $(CPPFLAGS) $(MYCPPFLAGS) $(CFLAGS) $@.c -o $@ $(LDFLAGS) $(CC_LDFLAGS)
 
 ####### Build rules
 
@@ -93,7 +94,7 @@ pgsql2300: $(LIB)
 	$(CC) $(CFLAGS) $@.c -o $@ -I/usr/include/pgsql -L/usr/lib/pgsql $(CC_LDFLAGS) -lpq
 
 sqlitelog2300: $(LIB)
-	$(CC) $(CFLAGS) $@.c -o $@ $(CC_LDFLAGS) -lsqlite3
+	$(CC) $(CPPFLAGS) $(MYCPPFLAGS) $(CFLAGS) $@.c -o $@ $(LDFLAGS) $(CC_LDFLAGS) -lsqlite3
 
 light2300: $(LIB)
 	$(MAKE_EXEC)
