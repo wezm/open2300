@@ -43,7 +43,7 @@ MAKE_EXEC = $(CC) $(CFLAGS) $@.c -o $@ $(CC_LDFLAGS)
 
 ####### Build rules
 
-all: open2300 dump2300 dumpconfig2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 light2300 interval2300 minmax2300
+all: open2300 dump2300 dumpconfig2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 light2300 interval2300 minmax2300 sqlitelog2300
 
 lib2300 :
 	$(CC) -c -fPIC $(CFLAGS) $(LIB_C)
