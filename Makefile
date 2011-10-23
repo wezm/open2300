@@ -1,7 +1,7 @@
 ####### Makefile for open2300 - manually generated
 #
 # Starting from v 1.2 all user parameters are stored in a config file
-# Default locations are 
+# Default locations are
 # 1. Path to config file including filename given as parameter
 # 2. ./open2300.conf
 # 3. /usr/local/etc/open2300.conf
@@ -43,16 +43,16 @@ lib2300 :
 
 open2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 dump2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 dumpconfig2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 log2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 fetch2300 : $(LIB)
 	$(MAKE_EXEC)
 
@@ -61,16 +61,16 @@ srv2300 : $(LIB)
 
 wu2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 cw2300 : $(LIB)
 	$(MAKE_EXEC)
 
 history2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 histlog2300 : $(LIB)
 	$(MAKE_EXEC)
-	
+
 bin2300 : $(LIB)
 	$(MAKE_EXEC)
 
@@ -88,13 +88,13 @@ sqlitelog2300: $(LIB)
 
 light2300: $(LIB)
 	$(MAKE_EXEC)
-	
+
 interval2300: $(LIB)
 	$(MAKE_EXEC)
-	
+
 minmax2300: $(LIB)
 	$(MAKE_EXEC)
-	
+
 mysqlhistlog2300 : $(LIB)
 	$(CC) $(CFLAGS) $@.c -o $@ -I/usr/include/mysql -L/usr/lib/mysql $(CC_LDFLAGS) -lmysqlclient
 
@@ -118,7 +118,7 @@ install:
 	$(INSTALL) minmax2300 $(bindir)
 #	$(INSTALL) mysql2300 $(bindir)
 #	$(INSTALL) mysqlhistlog2300 $(bindir)
-	
+
 uninstall:
 	rm -f $(libdir)/$(LIB).* $(bindir)/open2300 $(bindir)/dump2300 $(bindir)/log2300  $(bindir)/fetch2300 $(bindir)/srv2300 $(bindir)/wu2300 $(bindir)/cw2300 $(bindir)/xml2300 $(bindir)/light2300 $(bindir)/interval2300 $(bindir)/minmax2300 $(bindir)/histlog2300 $(bindir)/mysql2300 $(bindir)/mysqlhistlog2300
 
