@@ -47,7 +47,7 @@ MAKE_EXEC = $(CC) $(CPPFLAGS) $(MYCPPFLAGS) $(CFLAGS) $@.c -o $@ $(LDFLAGS) $(CC
 all: open2300 dump2300 dumpconfig2300 log2300 fetch2300 wu2300 cw2300 history2300 histlog2300 bin2300 xml2300 light2300 interval2300 minmax2300
 
 lib2300 :
-	$(CC) -c -fPIC $(CFLAGS) $(LIB_C)
+	$(CC) -c -fPIC $(CPPFLAGS) $(MYCPPFLAGS) $(CFLAGS) $(LIB_C)
 	$(CC) $(LFLAGS),$@.$(LSUFFIX) -o $@.$(LSUFFIX).$(VERSION) $(LIBOBJ)
 	ln -sf $@.$(LSUFFIX).$(VERSION) $@.$(LSUFFIX)
 
