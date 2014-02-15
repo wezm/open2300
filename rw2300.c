@@ -2394,6 +2394,7 @@ int get_configuration(struct config_type *config, char *path)
 	// First we set everything to defaults - faster than many if statements
 	strcpy(config->serial_device_name, DEFAULT_SERIAL_DEVICE);  // Name of serial device
 	strcpy(config->citizen_weather_id, "CW0000");               // Citizen Weather ID
+	strcpy(config->citizen_weather_passcode, "-1");             // Citizen Weather ID
 	strcpy(config->citizen_weather_latitude, "5540.12N");       // latitude default Glostrup, DK
 	strcpy(config->citizen_weather_longitude, "01224.60E");     // longitude default, Glostrup, DK
 	strcpy(config->aprs_host[0].name, "rotate.aprs.net");       // host1 name
@@ -2455,6 +2456,12 @@ int get_configuration(struct config_type *config, char *path)
 		if ((strcmp(token,"CITIZEN_WEATHER_ID")==0) && (strlen(val) != 0))
 		{
 			strcpy(config->citizen_weather_id, val);
+			continue;
+		}
+
+		if ((strcmp(token,"CITIZEN_WEATHER_PASSCODE")==0) && (strlen(val) != 0))
+		{
+			strcpy(config->citizen_weather_passcode, val);
 			continue;
 		}
 		
