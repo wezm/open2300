@@ -65,6 +65,7 @@ struct config_type
 {
 	char   serial_device_name[50];
 	char   citizen_weather_id[30];
+	char   citizen_weather_passcode[30];
 	char   citizen_weather_latitude[20];
 	char   citizen_weather_longitude[20];
 	hostdata aprs_host[MAX_APRS_HOSTS]; // max 6 possible aprs hosts 1 primary and 5 alternate
